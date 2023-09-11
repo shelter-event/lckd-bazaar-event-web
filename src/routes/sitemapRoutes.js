@@ -1,10 +1,12 @@
-import React from 'react';
-import { Switch, Route } from 'react-router';
- 
-export default (
-    <Switch>
-        <Route path='/' />
-        <Route path='/about' />
-        <Route />
-    </Switch>
-)
+import { createBrowserRouter } from "react-router-dom";
+import { default as Main } from "../main/Main";
+import App from "../App";
+
+export const router = createBrowserRouter([
+  {
+    path: '/', element: <App />,
+    children: [
+      { path: '/', element: <Main /> },
+    ]
+  }
+])
