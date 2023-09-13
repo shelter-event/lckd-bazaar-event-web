@@ -1,6 +1,15 @@
+import { mainColor } from "../styles/styles"
+
 const Footer = () => {
-  return <div>
-    this is footer
+  const style = {
+    width: '100%',
+    height: '60px',
+    backgroundColor: mainColor,
+  }
+
+  return <div style={style}>
+    
+
   </div>
 }
 

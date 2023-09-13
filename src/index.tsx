@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
 import { router } from './routes/sitemapRoutes';
 
 const root = ReactDOM.createRoot(
