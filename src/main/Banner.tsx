@@ -17,13 +17,20 @@ const Banner = () => {
   const bannerSpan = isPc ? bannerSpanPC : bannerSpanMobile
 
 
-  return <div style={bannerStyle}>
+  return <div
+    style={bannerStyle}
+    aria-label='배너 이미지'
+  >
     <Dimmed />
     <div style={bannerTextBox}>
-      <h1 style={bannerH1}>11월 1일! LCKD <span style={{ color: mainColor }}>바자회</span>에 초대합니다.</h1>
-      <span style={bannerSpan}>LCKD (비영리민간단체 유기동물 보호소)</span>
+      <h1 style={bannerH1} aria-label='11월 1일! LCKD 바자회에 초대합니다.'>
+        11월 1일! LCKD <span style={{ color: mainColor }}>바자회</span>에 초대합니다.
+      </h1>
+      <span style={bannerSpan} aria-label='LCKD (비영리민간단체 유기동물 보호소)'>
+        LCKD (비영리민간단체 유기동물 보호소)
+      </span>
     </div>
-  </div >
+  </div>
 }
 
 export default Banner
