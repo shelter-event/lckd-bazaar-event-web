@@ -38,6 +38,7 @@ const banner = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  overflow: 'auto',
 }
 
 const bannerPC = {
