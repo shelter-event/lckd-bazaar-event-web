@@ -1,0 +1,53 @@
+@import "../styles/common.scss";
+
+.banner {
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+
+  @include pc {
+    min-height: 100vh;
+    height: 100vh;
+  }
+
+  @include mobile {
+    min-height: 300px;
+    height: 300px;
+  }
+
+  .textBox {
+    color: white;
+    text-align: center;
+    z-index: 1;
+
+    .title {
+      font-weight: 700;
+
+      @include pc {
+        font-size: 64px;
+      }
+
+      @include mobile {
+        font-size: 24px;
+      }
+    }
+
+    .name {
+      font-weight: 500;
+      @include pc {
+        font-size: 24px;
+      }
+      @include mobile {
+        font-size: 13px;
+      }
+    }
+  }
+
+
+
+
+}

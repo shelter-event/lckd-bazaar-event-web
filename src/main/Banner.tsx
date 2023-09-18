@@ -1,32 +1,23 @@
-import { useMediaQuery } from 'react-responsive';
 import BannerImage from '../assets/banner.jpeg';
 import Dimmed from '../common/Dimmed';
 import { mainColor, white } from '../styles/styles';
+import styles from './banner.module.scss'
 
 const Banner = () => {
-  const isPc = useMediaQuery({
-    query: "(min-width:1024px)"
-  });
-
-  const bannerStyle = {
-    ...banner,
-    ...(isPc ? bannerPC : bannerMobile),
-  }
-
-  const bannerH1 = isPc ? bannerH1PC : bannerH1Mobile
-  const bannerSpan = isPc ? bannerSpanPC : bannerSpanMobile
-
 
   return <div
-    style={bannerStyle}
+    className={styles.banner}
     aria-label='배너 이미지'
+    style={{
+      backgroundImage: `url(${BannerImage})`,
+    }}
   >
     <Dimmed />
-    <div style={bannerTextBox}>
-      <h1 style={bannerH1} aria-label='11월 1일! LCKD 바자회에 초대합니다.'>
+    <div className={styles.textBox}>
+      <h1 className={styles.title} aria-label='11월 1일! LCKD 바자회에 초대합니다.'>
         11월 1일! LCKD <span style={{ color: mainColor }}>바자회</span>에 초대합니다.
       </h1>
-      <span style={bannerSpan} aria-label='LCKD (비영리민간단체 유기동물 보호소)'>
+      <span className={styles.name} aria-label='LCKD (비영리민간단체 유기동물 보호소)'>
         LCKD (비영리민간단체 유기동물 보호소)
       </span>
     </div>
@@ -35,46 +26,6 @@ const Banner = () => {
 
 export default Banner
 
-// Banner Box
-const banner = {
-  width: '100vw',
-  position: 'relative' as 'relative',
-  backgroundImage: `url(${BannerImage})`,
-  backgroundSize: 'cover',
-
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  overflow: 'auto',
-}
-
-const bannerPC = {
-  minHeight: '100vh',
-  height: '100vh',
-}
-
-const bannerMobile = {
-  minHeight: '300px',
-  height: '300px',
-}
-
-
-// Text
-const bannerTextBox = {
-  color: white,
-  textAlign: 'center' as 'center',
-  zIndex: 1,
-}
-
-const bannerH1PC = {
-  fontSize: '64px',
-  fontWeight: 700,
-}
-
-const bannerH1Mobile = {
-  fontSize: '24px',
-  fontWeight: 700,
-}
 
 const bannerSpanPC = {
   fontSize: '24px',
