@@ -1,15 +1,7 @@
-import { mainColor } from "../styles/styles"
+import styles from './footer.module.scss'
 
 const Footer = () => {
-  return <div style={footerStyle}>
-
-  </div>
+  return <div className={styles.footer}></div>
 }
 
 export default Footer
-
-const footerStyle = {
-  width: '100%',
-  height: '60px',
-  backgroundColor: mainColor,
-}

@@ -1,5 +1,9 @@
 @import "../styles/common.scss";
 
+.mainColor {
+  color: $mainColor;
+}
+
 .banner {
   width: 100vw;
   position: relative;
@@ -46,8 +50,4 @@
       }
     }
   }
-
-
-
-
 }
