@@ -1,0 +1,165 @@
+@import "../styles/common.scss";
+
+.lckdWrapper {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include pc {
+    background-image: url(../assets/lckd_background.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+
+  .lckd {
+    box-sizing: border-box;
+    text-align: center;
+
+    @include pc {
+      width: 1440px;
+      max-width: 1440px;
+      min-width: 1024px;
+
+      padding-top: 82px;
+      padding-bottom: 60px
+    }
+
+    @include mobile {
+      padding-top: 28px;
+      padding-bottom: 68px
+    }
+
+    .title {
+      @include pc {
+        font-size: 40px;
+        font-weight: 700;
+      }
+
+      @include mobile {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+    }
+
+    hr {
+      margin: 0 auto;
+      margin-top: 28px;
+      margin-bottom: 45px;
+
+      width: 860px;
+      border-style: dashed;
+    }
+
+    .introduction {
+      @include pc {
+        font-size: 24px;
+        font-weight: 400;
+        color: #4D4D4D;
+
+      }
+
+      @include mobile {
+        font-size: 11px;
+        font-weight: 400;
+        color: #878787;
+      }
+    }
+  }
+}
+
+.featureWrapper {
+  display: flex;
+
+  @include pc {
+    margin-top: 72px;
+    gap: 24px;
+  }
+
+  @include mobile {
+    margin-top: 30px;
+    color: $lckdFeatureTitleColor;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .featureBox {
+    display: flex;
+    box-sizing: border-box;
+    
+    @include pc {
+      width: 342px;
+      min-height: 400px;
+      padding: 48px 28px;
+
+      color: $lckdFeatureTitleColor;
+
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.80);
+      box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.10);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+    }
+
+    @include mobile {
+      width: 100%;
+      padding: 16px 20px;
+      gap: 26px;
+      align-items: center;
+
+      border-radius: 4px;
+      border: 1px solid #fffdfd;
+      background-color: #fffdfd;
+      box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .featTitle {
+      @include pc {
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      @include mobile {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.9px;
+      }
+    }
+
+    .iconWrapper {
+      @include pc {
+        display: block;
+        margin-top: 50px;
+        text-align: center;
+      }
+
+      @include mobile {
+        display: inline-block;
+      }
+
+      .icon {
+        @include pc {
+          width: 120px;
+          height: 120px;
+        }
+
+        @include mobile {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+
+    .content {
+      font-size: 14px;
+      font-weight: 500;
+      color: $lckdFeatureContentColor;
+
+      margin-top: 26px;
+    }
+
+  }
+}
