@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import { default as Main } from "../main/Main";
 import App from "../App";
+import Main from "../main/Main";
 
 export const router = createBrowserRouter([
   {
@@ -8,5 +8,5 @@ export const router = createBrowserRouter([
     children: [
       { path: '/', element: <Main /> },
     ]
-  }
+  },
 ])
