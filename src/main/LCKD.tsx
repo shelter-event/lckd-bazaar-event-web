@@ -15,7 +15,7 @@ const LCKD = () => {
       <h2 className={styles.title}>LCKD (비영리민간단체 유기동물 보호소)</h2>
       {isPc ? <hr /> : <></>}
       <span className={styles.introduction}>
-        LCKD에 머무르는 아이들은 일시적으로 갈곳이 없어 모여있는 장소이며 임보{isPc ? <></> : <br />} 및 입양처를 기다리고 있습니다.
+        LCKD에 머무르는 아이들은 일시적으로 갈곳이 없어 모여있는 장소이며 임보 및 입양처를 기다리고 있습니다.
       </span>
 
       <div className={styles.featureWrapper}>
