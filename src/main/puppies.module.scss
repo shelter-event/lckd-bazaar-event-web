@@ -29,10 +29,20 @@
 
   .introduction {
     text-align: center;
+    display: block;
     color: #000;
     font-size: 24px;
     font-weight: 400;
-    margin-top: 21px;
+
+    @include pc {
+      margin-top: 21px;
+      margin-bottom: 90px;
+    }
+
+    @include mobile {
+      margin-top: 12px;
+      margin-bottom: 24px;
+    }
   }
 
 }
@@ -40,46 +50,72 @@
 .cardWrapper {
   display: flex;
   flex-wrap: wrap;
-  
+
   @include pc {
     gap: 1.597%;
   }
 
   @include mobile {
     gap: 4.762%;
-  }
-}
 
-.card {
-  box-sizing: border-box;
-  background-color: #D9D9D9;
-  
-  @include pc {
-    width: 32.268%;
-    height: 462px;
-    max-height: 32.268vh;
-    flex: 0 1 calc(32.268%);
-    margin-bottom: 25px;
+    .productMore {
+      border-radius: 20px;
+      display: flex;
+      justify-self: unset;
+      cursor: pointer;
+
+    }
   }
 
-  @include mobile {
-    width: 47.619%;
-    flex: 0 1 calc(47.619%);
-    margin-bottom: 16px;
-    height: 160px;
-  }
-  
-  &.family {
+  .card {
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+
     @include pc {
-      flex: 0 2 calc(66.133%);
+      width: 32.268%;
+      height: 462px;
+      max-height: 32.268vh;
+      flex: 0 1 calc(32.268%);
+      margin-bottom: 25px;
     }
 
     @include mobile {
-      flex: 0 2 calc(100%);
+      width: 47.619%;
+      flex: 0 1 calc(47.619%);
+      margin-bottom: 16px;
+      height: 160px;
+    }
+
+    &.family {
+      @include pc {
+        flex: 0 2 calc(66.133%);
+      }
+
+      @include mobile {
+        flex: 0 2 calc(100%);
+      }
     }
   }
 
+  .more {
+    width: 100%;
+    padding: 45px;
+    border-radius: 20px;
+    cursor: pointer;
+    
+    display: block;
+    justify-content: center;
 
+    color: #fff;
+    background-color: #868686;
+    text-align: center;
+    
+    font-size: 24px;
+    font-weight: 700;
 
-
+    @include mobile {
+      padding: 8px;
+    }
+  }
 }
