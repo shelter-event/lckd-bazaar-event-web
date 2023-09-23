@@ -64,8 +64,13 @@ const Puppies = () => {
     <span className={styles.introduction}>쉼터에 있는 아이들을 소개합니다.</span>
     <div className={styles.cardWrapper}>
       {
-        puppies.map((puppy) => {
-          return <PuppiesCard src={puppy.src} alt={puppy.alt} isFamily={puppy.isFamily} />
+        puppies.map((puppy, index) => {
+          return <PuppiesCard
+            key={index}
+            src={puppy.src}
+            alt={puppy.alt}
+            isFamily={puppy.isFamily}
+          />
         })
       }
       {

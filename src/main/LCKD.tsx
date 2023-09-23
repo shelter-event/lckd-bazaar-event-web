@@ -53,17 +53,18 @@ const FeatureBox = ({ title, type, content }: FeatureBoxParams) => {
 
   return <>
     {
-      isPc ? <div className={styles.featureBox}>
-        <h3 className={styles.featTitle}>{title.split('\n').map(str => <p>{str}</p>)}</h3>
-        <div className={styles.iconWrapper}>
-          {
-            type === FeatureType.HEALING ? <Healing className={styles.icon} /> :
-              type === FeatureType.ADOPT ? <Adopt className={styles.icon} /> :
-                type === FeatureType.BUSINESS ? <Business className={styles.icon} /> : <Event className={styles.icon} />
-          }
-        </div>
-        <span className={styles.content}>{content}</span>
-      </div> :
+      isPc ?
+        <div className={styles.featureBox}>
+          <h3 className={styles.featTitle}>{title.split('\n').map((str, index) => <p key={index}>{str}</p>)}</h3>
+          <div className={styles.iconWrapper}>
+            {
+              type === FeatureType.HEALING ? <Healing className={styles.icon} /> :
+                type === FeatureType.ADOPT ? <Adopt className={styles.icon} /> :
+                  type === FeatureType.BUSINESS ? <Business className={styles.icon} /> : <Event className={styles.icon} />
+            }
+          </div>
+          <span className={styles.content}>{content}</span>
+        </div> :
         <div className={styles.featureBox}>
           <div className={styles.iconWrapper}>
             {
