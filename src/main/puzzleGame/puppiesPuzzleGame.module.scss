@@ -1,0 +1,97 @@
+@import "../../styles/common.scss";
+
+
+.puppiesPuzzleGameBox {
+  margin: 0 auto;
+
+
+  @include pc {
+    max-width: 1440px;
+    width: 100%;
+
+    padding-top: 120px;
+    padding-bottom: 128px;
+  }
+
+  @include mobile {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding-top: 36px;
+    padding-bottom: 34px;
+  }
+
+  .title {
+    text-align: center;
+    color: #000;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .introduction {
+    text-align: center;
+    display: block;
+    color: #000;
+    font-size: 24px;
+    font-weight: 400;
+
+    @include pc {
+      margin-top: 21px;
+      margin-bottom: 90px;
+    }
+
+    @include mobile {
+      margin-top: 12px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .puzzleLevelButtonWrapper {
+    display: flex;
+    gap: 25px;
+  }
+
+}
+
+.puzzleLevelButton {
+  cursor: pointer;
+  padding: 20px 44px;
+  display: inline-block;
+  border-radius: 12px;
+  background-color: #e4e4e4;
+
+  .level {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .separator {
+    font-size: 32px;
+    font-weight: 100;
+
+  }
+
+  .cellNumber {
+    font-size: 24px;
+    font-weight: 300;
+
+  }
+
+}
+
+.puzzleGameButton {
+  cursor: pointer;
+  padding: 20px 50px;
+  display: inline-block;
+  border-radius: 12px;
+  background-color: #e4e4e4;
+
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.puzzleGameBox {
+  border-radius: 12px;
+  background-color: #E4E4E4;
+}
