@@ -2,7 +2,7 @@ import Banner from "./Banner";
 import LCKD from "./LCKD";
 import Puppies from "./Puppies";
 import { useMediaQuery } from "react-responsive";
-import PuppiesPuzzleGame from "./puzzleGame/PuppiesPuzzleGame";
+import MatchingMatchingGame from "./matchingGame/PuppiesMatchingGame";
 
 const Main = () => {
   const isPc = useMediaQuery({
@@ -15,7 +15,7 @@ const Main = () => {
     <Banner />
     <LCKD />
     <Puppies />
-    <PuppiesPuzzleGame />
+    <MatchingMatchingGame />
   </div>
 }
 

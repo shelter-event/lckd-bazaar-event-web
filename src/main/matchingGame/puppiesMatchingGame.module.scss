@@ -1,7 +1,7 @@
 @import "../../styles/common.scss";
 
 
-.puppiesPuzzleGameBox {
+.puppiesMatchingGameBox {
   margin: 0 auto;
 
 
@@ -47,14 +47,14 @@
     }
   }
 
-  .puzzleLevelButtonWrapper {
+  .matchingLevelButtonWrapper {
     display: flex;
     gap: 25px;
   }
 
 }
 
-.puzzleLevelButton {
+.matchingLevelButton {
   cursor: pointer;
   padding: 20px 44px;
   display: inline-block;
@@ -80,7 +80,7 @@
 
 }
 
-.puzzleGameButton {
+.matchingGameButton {
   cursor: pointer;
   padding: 20px 50px;
   display: inline-block;
@@ -91,7 +91,59 @@
   font-weight: 500;
 }
 
-.puzzleGameBox {
-  border-radius: 12px;
+.matchingGameBox {
+  position: relative;
+  border-radius: 20px;
   background-color: #E4E4E4;
+  max-width: 1440px;
+  width: 100%;
+
+  .gameOnBoard {
+    // position: absolute;
+
+    &.active {
+      display: block;
+    }
+
+    &.inactive {
+      display: none;
+    }
+
+    .onBoardTitle {
+      text-align: center;
+      font-weight: 700;
+      color: white;
+
+      @include pc {
+        font-size: 32px;
+      }
+
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+
+    .onBoardIntroduction {
+      color: white;
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    .gameExplanation {
+      color: #C4C4C4;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .startButton {
+      color: #000;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 22px 50px;
+      background-color: #E4E4E4;
+      display: inline-block;
+    }
+
+  }
+
 }
