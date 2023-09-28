@@ -143,6 +143,43 @@
       background-color: #E4E4E4;
       display: inline-block;
     }
+  }
+
+  .cardWrapper {
+    display: grid;
+    box-sizing: border-box;
+    gap: 10px;
+    padding: 10px;
+
+    &.row {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &.middle {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    &.high {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .card {
+      cursor: pointer;
+      box-sizing: border-box;
+      border: solid 1px black;
+      height: 100px;
+
+      transition: transform 0.5s;
+      
+      &.active {
+        transform: rotateY(180deg);
+      }
+
+      .back {
+        transform: rotateY(180deg);
+      }
+    }
+
 
   }
 

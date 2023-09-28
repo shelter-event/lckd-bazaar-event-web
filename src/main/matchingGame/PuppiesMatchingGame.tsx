@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
-import styles from './puppiesMatchingGame.module.scss'
-import { MatchingGameButton, MatchingLevelButton, MatchingLevelButtonType } from './MatchingGameButton'
 import MatchingGame from './MatchingGame'
+import { MatchingGameButton, MatchingLevelButton, MatchingLevelButtonType } from './MatchingGameButton'
+import styles from './puppiesMatchingGame.module.scss'
 
 const MatchingMatchingGame = () => {
-  const [level, setLevel] = useState(MatchingLevelButtonType.HIGH)
+  const [level, setLevel] = useState(MatchingLevelButtonType.ROW)
+  const [useHint, setUseHint] = useState(false)
+  const [retry, setRetry] = useState(false)
+  const [isOnBoarding, setIsOnBoarding] = useState(false)
 
   useEffect(() => {
     console.log(`level: ${level}`)
@@ -38,21 +41,24 @@ const MatchingMatchingGame = () => {
       <MatchingGameButton
         title={'힌트보기'}
         onClick={() => {
-          console.log('Show Hint')
+          if (useHint) return
+          setUseHint(true)
+          setTimeout(() => { setUseHint(false) }, 3000)
         }}
       />
       <br />
       <br />
       <MatchingGameButton
         title={'다시하기'}
-        onClick={() => {
-          console.log('Retry')
-        }}
+        onClick={() => setRetry(!retry)}
       />
     </div>
 
-    <MatchingGame />
-
+    <MatchingGame
+      level={level}
+      useHint={useHint}
+      retry={retry}
+    />
   </div>
 }
 
