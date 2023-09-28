@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { CardParameter, cardParameters, copyWithCard } from './CardParameters';
 import { MatchingLevelButtonType } from './MatchingGameButton';
 import MatchingOnBoard from './MatchingOnBoard';
 import styles from './puppiesMatchingGame.module.scss';
@@ -29,40 +30,19 @@ const MatchingGame = ({
   const [clickCount, setClickCount] = useState(0)
   const [successCardIds, setSuccessCardIds] = useState([] as number[])
 
-  // useEffect(() => {
-  //   if (level === MatchingLevelButtonType.HIGH) {
-  //     const copyCards = shuffleArray(baseCards).slice(0, 4)
-  //     setCards([...copyCards])
-  //   } else if (level === MatchingLevelButtonType.MIDDLE) {
-  //     const copyCards = shuffleArray(baseCards).slice(0, 8)
-
-  //     setCards([...copyCards])
-  //   } else if (level === MatchingLevelButtonType.ROW) {
-  //     const copyCards = shuffleArray(baseCards).slice(0, 16)
-
-  //     setCards([...copyCards])
-  //   }
-  // }, [level])
-
-  const shuffleCards = () => {
-    if (level === MatchingLevelButtonType.HIGH) {
-
-    } else if (level === MatchingLevelButtonType.MIDDLE) {
-
-    } else if (level === MatchingLevelButtonType.ROW) {
-      
-    }
-  }
+  useEffect(() => {
+    shuffleCards()
+  }, [level])
 
   useEffect(() => {
     setCards((prevCards) => prevCards.map((card) => new CardParameter(card.id, card.name, false)))
     setClickCount(0)
     setSuccessCardIds([])
     setClickCardIds([])
+    shuffleCards()
   }, [retry])
 
   useEffect(() => {
-    console.log(`change useHint: ${useHint}`)
     if (useHint) {
       setCards((prevCard) => prevCard.map((card) =>
         new CardParameter(card.id, card.name, true))
@@ -75,6 +55,22 @@ const MatchingGame = ({
       ))
     }
   }, [useHint])
+
+  const shuffleCards = () => {
+    if (level === MatchingLevelButtonType.HIGH) {
+      setCards(shuffleArray(
+        shuffleArray(cardParameters).splice(0, 12).flat()
+      ))
+    } else if (level === MatchingLevelButtonType.MIDDLE) {
+      setCards(shuffleArray(
+        shuffleArray(cardParameters).splice(0, 8).flat()
+      ))
+    } else if (level === MatchingLevelButtonType.ROW) {
+      setCards(shuffleArray(
+        shuffleArray(cardParameters).splice(0, 4).flat()
+      ))
+    }
+  }
 
   // TODO 전체적으로 변경되는 현상 수정
   const clickCard = (card: CardParameter) => {
@@ -108,7 +104,6 @@ const MatchingGame = ({
 
   const rollbackCard = () => {
     setTimeout(() => {
-      console.log(clickCardIds)
       setCards((prevCards) => prevCards.map((card) => {
         if (successCardIds.includes(card.id)) return card
         return new CardParameter(card.id, card.name, false);
@@ -148,70 +143,6 @@ const MatchingGame = ({
 
 export default MatchingGame
 
-class CardParameter {
-  constructor(
-    readonly id: number,
-    readonly name: string,
-    readonly isActive: boolean = false,
-  ) { }
-
-}
-
-const copyWithCard = (card: CardParameter) => {
-  return new CardParameter(card.id, card.name, !card.isActive)
-}
-
-const baseCards = [
-  [
-    new CardParameter(1, '벤'),
-    new CardParameter(2, '벤'),
-  ],
-  [
-    new CardParameter(3, '쿠키네'),
-    new CardParameter(4, '쿠키네'),
-  ],
-  [
-    new CardParameter(5, '포포네'),
-    new CardParameter(6, '포포네'),
-  ],
-  [
-    new CardParameter(7, '가을'),
-    new CardParameter(8, '가을'),
-  ],
-  [
-    new CardParameter(9, '미소'),
-    new CardParameter(10, '미소'),
-  ],
-  [
-    new CardParameter(11, '콩콩'),
-    new CardParameter(12, '콩콩'),
-  ],
-  [
-    new CardParameter(13, '마리'),
-    new CardParameter(14, '마리'),
-  ],
-  [
-    new CardParameter(15, '돌체'),
-    new CardParameter(16, '돌체'),
-  ],
-  [
-    new CardParameter(17, '복순'),
-    new CardParameter(18, '복순'),
-  ],
-  [
-    new CardParameter(19, '방울'),
-    new CardParameter(20, '방울'),
-  ],
-  [
-    new CardParameter(21, '몽구'),
-    new CardParameter(22, '몽구'),
-  ],
-  [
-    new CardParameter(23, '햇살이네'),
-    new CardParameter(24, '햇살이네'),
-  ],
-]
-
 const shuffleArray = (array: any) => {
   const shuffled = [...array]
   for (let index = shuffled.length - 1; index > 0; index--) {
@@ -220,3 +151,4 @@ const shuffleArray = (array: any) => {
   }
   return shuffled
 }
+
