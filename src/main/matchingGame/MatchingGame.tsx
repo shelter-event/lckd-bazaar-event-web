@@ -4,6 +4,7 @@ import { CardParameter, cardParameters, copyWithCard } from './CardParameters';
 import { MatchingLevelButtonType } from './MatchingGameButton';
 import MatchingOnBoard from './MatchingOnBoard';
 import styles from './puppiesMatchingGame.module.scss';
+import { shuffleArray } from '../../common/ShuffleArray';
 
 
 const MatchingGame = ({
@@ -58,17 +59,23 @@ const MatchingGame = ({
 
   const shuffleCards = () => {
     if (level === MatchingLevelButtonType.HIGH) {
-      setCards(shuffleArray(
-        shuffleArray(cardParameters).splice(0, 12).flat()
-      ))
+      setCards(
+        shuffleArray(
+          shuffleArray(cardParameters).splice(0, 12).flat()
+        )
+      )
     } else if (level === MatchingLevelButtonType.MIDDLE) {
-      setCards(shuffleArray(
-        shuffleArray(cardParameters).splice(0, 8).flat()
-      ))
+      setCards(
+        shuffleArray(
+          shuffleArray(cardParameters).splice(0, 8).flat()
+        )
+      )
     } else if (level === MatchingLevelButtonType.ROW) {
-      setCards(shuffleArray(
-        shuffleArray(cardParameters).splice(0, 4).flat()
-      ))
+      setCards(
+        shuffleArray(
+          shuffleArray(cardParameters).splice(0, 4).flat()
+        )
+      )
     }
   }
 
@@ -81,7 +88,7 @@ const MatchingGame = ({
     setCopyCards(copyWithCard(card))
 
     if (clickCount + 1 < 2) return
-    checkSuccess(copyClickCardIds);
+    isMatchCards(copyClickCardIds);
   }
 
   const setCopyCards = (card: CardParameter) => {
@@ -91,7 +98,7 @@ const MatchingGame = ({
     }))
   }
 
-  const checkSuccess = (copyClickCardIds: number[]) => {
+  const isMatchCards = (copyClickCardIds: number[]) => {
     const selectedCards = cards.filter((c) => copyClickCardIds.includes(c.id));
     if (selectedCards[0].name === selectedCards[1].name) {
       setSuccessCardIds((prevIds) => [...prevIds, selectedCards[0].id, selectedCards[1].id]);
@@ -142,13 +149,3 @@ const MatchingGame = ({
 }
 
 export default MatchingGame
-
-const shuffleArray = (array: any) => {
-  const shuffled = [...array]
-  for (let index = shuffled.length - 1; index > 0; index--) {
-    const j = Math.floor(Math.random() * (index + 1));
-    [shuffled[index], shuffled[j]] = [shuffled[j], shuffled[index]];
-  }
-  return shuffled
-}
-
