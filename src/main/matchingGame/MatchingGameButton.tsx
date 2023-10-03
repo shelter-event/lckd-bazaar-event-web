@@ -17,7 +17,7 @@ const typeTitle = (type: MatchingLevelButtonType) => {
 }
 
 const typeCellNumber = (type: MatchingLevelButtonType) => {
-  return type === MatchingLevelButtonType.HIGH ? '16 x 16' : type === MatchingLevelButtonType.MIDDLE ? '8 x 8' : '4 x 4'
+  return type === MatchingLevelButtonType.HIGH ? '4 x 6' : type === MatchingLevelButtonType.MIDDLE ? '4 x 4' : '4 x 2'
 }
 
 export const MatchingGameButton = ({ title, onClick }: any) => {
