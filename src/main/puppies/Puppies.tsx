@@ -16,37 +16,29 @@ const Puppies = () => {
     var count = 0
     var result = [] as PuppyParameter[]
 
-    if (isMore) {
-      result = puppyParameters
-      setPuppies(result)
-      return
-    }
-
     if (!isPc) {
       for (let i = 0; i < puppyParameters.length && count < 6; i++) {
         result.push(puppyParameters[i])
         count++
       }
-
     } else {
-      for (let i = 0; i < puppyParameters.length && count < 9; i++) {
+      for (let i = 0; i < puppyParameters.length && count < 6; i++) {
         result.push(puppyParameters[i])
         count++
       }
     }
     setPuppies(result)
-  }, [isMore, isPc])
 
-  useEffect(() => {
-    isMoreCheck()
-  }, [])
-
-  const isMoreCheck = () => {
-    if (puppies.length >= puppyParameters.length) {
-      if (isMore) setIsMore(false)
+    if (result.length >= puppyParameters.length) {
+      setIsMore(true)
     } else {
-      if (!isMore) setIsMore(true)
+      setIsMore(false)
     }
+  }, [isPc])
+
+  const showAllPuppies = () => {
+    setIsMore(true)
+    setPuppies(puppyParameters)
   }
 
   return <div style={{ backgroundColor: '#F2FFEC' }}>
@@ -73,13 +65,13 @@ const Puppies = () => {
             />
           })
         }
-        {
-          isMore ? '' :
-            <div className={styles.more} onClick={(e: any) => setIsMore(true)}>
-              <span>더보기</span>
-            </div>
-        }
       </div>
+      {
+        isMore ? '' :
+          <div className={styles.more} onClick={(e: any) => showAllPuppies()}>
+            <span>더보기</span>
+          </div>
+      }
     </div>
   </div>
 }

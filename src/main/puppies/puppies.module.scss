@@ -57,197 +57,202 @@
     }
   }
 
-}
 
-.cardWrapper {
-  display: flex;
-  flex-wrap: wrap;
-
-  @include pc {
-    gap: 1.597%;
-  }
-
-  @include mobile {
-    gap: 4.762%;
-
-    .productMore {
-      border-radius: 20px;
-      display: flex;
-      justify-self: unset;
-      cursor: pointer;
-    }
-  }
-
-  .card {
-    box-sizing: border-box;
-    border-radius: 20px;
-    background-color: #fff;
+  .cardWrapper {
+    display: flex;
+    flex-wrap: wrap;
 
     @include pc {
-      width: 32.268%;
-      // height: 462px;
-      // max-height: 32.268vh;
-      flex: 0 1 calc(32.268%);
-      margin-bottom: 25px;
+      gap: 1.597%;
     }
 
     @include mobile {
-      width: 47.619%;
-      flex: 0 1 calc(47.619%);
-      margin-bottom: 16px;
+      gap: 4.762%;
+
+      .productMore {
+        border-radius: 20px;
+        display: flex;
+        justify-self: unset;
+        cursor: pointer;
+      }
     }
 
-    .puppyInfoWrapper {
-      display: flex;
+    .card {
+      box-sizing: border-box;
+      border-radius: 20px;
+      background-color: #fff;
 
       @include pc {
-        justify-content: space-between;
-        padding-left: 38px;
-        padding-right: 25px;
-        padding-top: 28px;
-        padding-bottom: 8px;
+        width: 32.268%;
+        // height: 462px;
+        // max-height: 32.268vh;
+        flex: 0 1 calc(32.268%);
+        margin-bottom: 25px;
       }
 
       @include mobile {
-        justify-content: start;
-        padding-left: 24px;
-        padding-top: 16px;
-        padding-bottom: 8px;
+        width: 47.619%;
+        flex: 0 1 calc(47.619%);
+        margin-bottom: 16px;
       }
 
-      .puppyName {
-        display: inline-flex;
-        flex-direction: column;
+      .puppyInfoWrapper {
+        display: flex;
 
-        gap: 8px;
-        @include mobile {
-          gap: 2px;
+        @include pc {
+          justify-content: space-between;
+          padding-left: 38px;
+          padding-right: 25px;
+          padding-top: 28px;
+          padding-bottom: 8px;
         }
 
-        .name {
-          font-weight: 700;
-          color: #FFAD00;
+        @include mobile {
+          justify-content: start;
+          padding-left: 24px;
+          padding-top: 16px;
+          padding-bottom: 8px;
+        }
 
-          @include pc {
-            font-size: 32px;
-          }
+        .puppyName {
+          display: inline-flex;
+          flex-direction: column;
+
+          gap: 8px;
 
           @include mobile {
-            font-size: 18px;
+            gap: 2px;
+          }
+
+          .name {
+            font-weight: 700;
+            color: #FFAD00;
+
+            @include pc {
+              font-size: 32px;
+            }
+
+            @include mobile {
+              font-size: 18px;
+            }
+          }
+
+          .announcementNumber {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6F4A00;
+
+            @include mobile {
+              font-size: 12px;
+            }
           }
         }
 
-        .announcementNumber {
-          font-size: 14px;
-          font-weight: 500;
-          color: #6F4A00;
+        .puppyInfo {
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+
+          .features {
+            display: flex;
+            flex-direction: row;
+            gap: 14px;
+
+            svg {
+              cursor: pointer;
+              width: 24px;
+              height: 24px;
+            }
+          }
+        }
+      }
+
+      .profileImage {
+        width: 100%;
+        vertical-align: bottom;
+      }
+
+      .featureSelectStatusBar {
+        width: 100%;
+        height: 8px;
+        display: flex;
+
+        div {
+          width: 100%;
+          background-color: #FFE4AC;
+
+          @include pc {
+            &.active {
+              background-color: #FFAC01;
+            }
+          }
+        }
+
+      }
+
+      .featMoreWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        @include pc {
+          padding: 32px;
+        }
+
+        @include mobile {
+          padding: 12px;
+        }
+
+        .featureMoreTitle {
+          @include pc {
+            font-size: 20px;
+          }
 
           @include mobile {
             font-size: 12px;
           }
-        }
-      }
 
-      .puppyInfo {
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-
-        .features {
-          display: flex;
-          flex-direction: row;
-          gap: 14px;
-
-          svg {
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-          }
-        }
-      }
-    }
-
-    .profileImage {
-      width: 100%;
-      vertical-align: bottom;
-    }
-
-    .featureSelectStatusBar {
-      width: 100%;
-      height: 8px;
-      display: flex;
-
-      div {
-        width: 100%;
-        background-color: #FFE4AC;
-
-        @include pc {
-          &.active {
-            background-color: #FFAC01;
-          }
-        }
-      }
-
-    }
-
-    .featMoreWrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-
-      @include pc {
-        padding: 32px;
-      }
-
-      @include mobile {
-        padding: 12px;
-      }
-
-      .featureMoreTitle {
-        @include pc {
-          font-size: 20px;
+          font-weight: 500;
+          color: #6F4A00;
         }
 
-        @include mobile {
-          font-size: 12px;
-        }
-
-        font-weight: 500;
-        color: #6F4A00;
-      }
-
-      svg {
-        width: 8px;
-        height: 20px;
-
-        @include mobile {
+        svg {
           width: 8px;
-          height: 8px;
+          height: 20px;
+
+          @include mobile {
+            width: 8px;
+            height: 8px;
+          }
         }
       }
+
     }
 
   }
 
   .more {
-    width: 100%;
-    padding: 45px;
+    width: 50%;
+    max-width: 464px;
+    padding: 40px;
+    margin: 0 auto;
+    margin-top: 24px;
+
     border-radius: 20px;
     cursor: pointer;
-
     display: block;
-    justify-content: center;
 
-    color: #fff;
-    background-color: #868686;
+    color: #8C5E00;
+    background-color: #E4FFD8;
     text-align: center;
 
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 600;
 
     @include mobile {
-      padding: 8px;
+      font-size: 22px;
+      padding: 12px;
     }
   }
 }
