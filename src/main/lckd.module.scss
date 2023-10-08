@@ -7,9 +7,10 @@
   align-items: center;
 
   @include pc {
-    background-image: url(../assets/lckd_background.jpg);
+    background-image: url(../assets/lckd_background.webp);
     background-position: bottom;
     background-repeat: no-repeat;
+    background-size: contain;
   }
 
   .lckd {

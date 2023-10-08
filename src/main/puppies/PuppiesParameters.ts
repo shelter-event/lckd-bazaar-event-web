@@ -23,8 +23,8 @@ export class PuppyParameter {
 export const puppyParameters = [
   new PuppyParameter(
     1, '가을이', '#LCKD22_15',
-    require('../../assets/test.jpg'),
-    require('../../assets/test.jpg'),
+    require('../../assets/main/puppies/modal_profile/가을.webp'),
+    require('../../assets/main/puppies/front_profile/가을.webp'),
     null,
     '같은 강아지끼리 사이는 쏘쏘해요!',
     '시작은 낯을 가리지만 곧 사람을 반기는 애교쟁이가 돼요',
@@ -36,8 +36,8 @@ export const puppyParameters = [
   ),
   new PuppyParameter(
     2, '미소', '#22_0584',
-    require('../../assets/test.jpg'),
-    require('../../assets/test.jpg'),
+    require('../../assets/main/puppies/modal_profile/미소.webp'),
+    require('../../assets/main/puppies/front_profile/미소.webp'),
     null,
     null,
     '사람도 뽀뽀도 좋아해요!',
@@ -49,8 +49,8 @@ export const puppyParameters = [
   ),
   new PuppyParameter(
     3, '벤', '#23_0274',
-    require('../../assets/test.jpg'),
-    require('../../assets/test.jpg'),
+    require('../../assets/main/puppies/modal_profile/벤.webp'),
+    require('../../assets/main/puppies/front_profile/벤.webp'),
     null,
     '서열놀이 없이 사회성이 너무 좋아요! 다만 다른친구들의 거절사인을 배워야 해요',
     null,
@@ -62,8 +62,8 @@ export const puppyParameters = [
   ),
   new PuppyParameter(
     4, '콩콩이', '#22_0873',
-    require('../../assets/test.jpg'),
-    require('../../assets/test.jpg'),
+    require('../../assets/main/puppies/modal_profile/콩콩.webp'),
+    require('../../assets/main/puppies/front_profile/콩콩.webp'),
     null,
     'I am 내성적 강아지. mbti 대문자 I인점 알아주세요',
     '사람들이 너무 좋아요 정이 너무 많은 친구랍니다',
@@ -75,8 +75,8 @@ export const puppyParameters = [
   ),
   new PuppyParameter(
     5, '훈이', '#23_0280',
-    require('../../assets/test.jpg'),
-    require('../../assets/test.jpg'),
+    require('../../assets/main/puppies/modal_profile/훈이.webp'),
+    require('../../assets/main/puppies/front_profile/훈이.webp'),
     '사상충 치료 중이에요',
     '인싸훈이!  사랑주는 것도 받는 것도 좋아해요',
     '사람좋아! 내 미소를 칭찬해주세요',
@@ -88,8 +88,8 @@ export const puppyParameters = [
   ),
   new PuppyParameter(
     6, '마리', '#23_0227',
-    require('../../assets/test.jpg'),
-    require('../../assets/test.jpg'),
+    require('../../assets/main/puppies/modal_profile/마리.webp'),
+    require('../../assets/main/puppies/front_profile/마리.webp'),
     '난소암과 사상충 치료 중이에요',
     '살짝 예민한 편이에요.',
     '사람좋아!',
@@ -100,8 +100,8 @@ export const puppyParameters = [
   ),
   new PuppyParameter(
     7, '돌체', '#23_0382',
-    require('../../assets/test.jpg'),
-    require('../../assets/test.jpg'),
+    require('../../assets/main/puppies/modal_profile/돌체.webp'),
+    require('../../assets/main/puppies/front_profile/돌체.webp'),
     null,
     '애정이 많지만 눈치가 없을 때도 있어요',
     '사람좋아! 안아주는 걸 좋아해요',
