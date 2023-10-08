@@ -25,14 +25,21 @@
 
   .textBox {
     color: white;
-    text-align: center;
     z-index: 1;
 
+    @include pc {
+      margin-bottom: 200px;
+    }
+    
     .title {
       font-weight: 700;
-
+      line-height: 120%;
+      
       @include pc {
+        text-align: center;
         font-size: 64px;
+        margin-top: 50px;
+        margin-bottom: 50px;
       }
 
       @include mobile {
@@ -42,11 +49,25 @@
 
     .name {
       font-weight: 500;
+      line-height: 150%;
+      
       @include pc {
+        // display: block;
+        // padding-top: 100px;
+
+        position: absolute;
+        bottom: 100px;
+        right: 130px;
+        text-align: right;
         font-size: 24px;
       }
+
       @include mobile {
         font-size: 13px;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        text-align: right;
       }
     }
   }
