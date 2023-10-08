@@ -22,7 +22,7 @@ const MatchingMatchingGame = () => {
       쉼터 아이들 맞추기 게임
     </h2>
     <span className={styles.introduction}>
-      간단한 퍼즐 맞추기 게임을 통해 바자회에 방문하기 전에 쉼터 아이들 얼굴을 미리 익혀보세요!
+      간단한 짝맞추기 게임을 통해 바자회에 방문하기 전에 쉼터 아이들 얼굴을 미리 익혀보세요!
     </span>
 
     <div className={styles.matchingButtonWrapper}>
