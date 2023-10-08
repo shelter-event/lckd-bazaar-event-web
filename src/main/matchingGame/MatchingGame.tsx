@@ -1,32 +1,33 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { shuffleArray } from '../../common/ShuffleArray';
 import { CardParameter, cardParameters, copyWithCard } from './CardParameters';
-import { MatchingLevelButtonType } from './MatchingGameButton';
+import MatchingCard from './MatchingCard';
+import { MatchingGameButton, MatchingLevelButtonType } from './MatchingGameButton';
 import MatchingOnBoard from './MatchingOnBoard';
 import styles from './puppiesMatchingGame.module.scss';
-import { shuffleArray } from '../../common/ShuffleArray';
-
 
 const MatchingGame = ({
   level = MatchingLevelButtonType.ROW,
   isOnBoarding,
   useHint = false,
   retry = false,
+  setUseHint, setRetry
 }: any) => {
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
   })
 
   const [cards, setCards] = useState([
-    new CardParameter(1, '벤'),
-    new CardParameter(2, '훈이'),
-    new CardParameter(3, '호야'),
-    new CardParameter(4, '마리'),
-    new CardParameter(5, '벤'),
-    new CardParameter(6, '훈이'),
-    new CardParameter(7, '호야'),
-    new CardParameter(8, '마리'),
+    new CardParameter(1, '벤', require('../../assets/main/matching/card/벤.webp')),
+    new CardParameter(2, '가을이', require('../../assets/main/matching/card/가을.webp')),
+    new CardParameter(3, '미소', require('../../assets/main/matching/card/미소.webp')),
+    new CardParameter(4, '콩콩이', require('../../assets/main/matching/card/콩콩.webp')),
+    new CardParameter(5, '훈이', require('../../assets/main/matching/card/훈이.webp')),
+    new CardParameter(6, '마리', require('../../assets/main/matching/card/마리.webp')),
+    new CardParameter(7, '돌체', require('../../assets/main/matching/card/돌체.webp')),
   ])
+
   const [clickCardIds, setClickCardIds] = useState([] as number[])
   const [clickCount, setClickCount] = useState(0)
   const [successCardIds, setSuccessCardIds] = useState([] as number[])
@@ -36,7 +37,7 @@ const MatchingGame = ({
   }, [level])
 
   useEffect(() => {
-    setCards((prevCards) => prevCards.map((card) => new CardParameter(card.id, card.name, false)))
+    setCards((prevCards) => prevCards.map((card) => new CardParameter(card.id, card.name, card.url, false, card.type)))
     setClickCount(0)
     setSuccessCardIds([])
     setClickCardIds([])
@@ -46,40 +47,39 @@ const MatchingGame = ({
   useEffect(() => {
     if (useHint) {
       setCards((prevCard) => prevCard.map((card) =>
-        new CardParameter(card.id, card.name, true))
+        new CardParameter(card.id, card.name, card.url, true, card.type))
       )
     } else {
       setCards((prevCard) => prevCard.map((card) =>
         successCardIds.includes(card.id)
-          ? new CardParameter(card.id, card.name, true)
-          : new CardParameter(card.id, card.name, false)
+          ? new CardParameter(card.id, card.name, card.url, true, card.type)
+          : new CardParameter(card.id, card.name, card.url, false, card.type)
       ))
     }
   }, [useHint])
 
   const shuffleCards = () => {
     if (level === MatchingLevelButtonType.HIGH) {
+      const shuffle = shuffleArray(cardParameters).splice(0, 6)
+
       setCards(
         shuffleArray(
-          shuffleArray(cardParameters).splice(0, 12).flat()
-        )
-      )
-    } else if (level === MatchingLevelButtonType.MIDDLE) {
-      setCards(
-        shuffleArray(
-          shuffleArray(cardParameters).splice(0, 8).flat()
+          [...shuffle.map((card) => new CardParameter(card.id + cardParameters.length, card.name, card.url, false, 'name')),
+          ...shuffle]
         )
       )
     } else if (level === MatchingLevelButtonType.ROW) {
+      const shuffle = shuffleArray(cardParameters).splice(0, 2)
+
       setCards(
         shuffleArray(
-          shuffleArray(cardParameters).splice(0, 4).flat()
+          [...shuffle.map((card) => new CardParameter(card.id + cardParameters.length, card.name, card.url, false, 'name')),
+          ...shuffle]
         )
       )
     }
   }
 
-  // TODO 전체적으로 변경되는 현상 수정
   const clickCard = (card: CardParameter) => {
     if (card.isActive || clickCount === 2) return
     const copyClickCardIds = [...clickCardIds, card.id]
@@ -113,7 +113,7 @@ const MatchingGame = ({
     setTimeout(() => {
       setCards((prevCards) => prevCards.map((card) => {
         if (successCardIds.includes(card.id)) return card
-        return new CardParameter(card.id, card.name, false);
+        return new CardParameter(card.id, card.name, card.url, false, card.type);
       }));
       setClickCount(0);
       setClickCardIds([] as number[]);
@@ -122,28 +122,49 @@ const MatchingGame = ({
 
   const levelStyle = level === MatchingLevelButtonType.ROW ? styles.row : level === MatchingLevelButtonType.MIDDLE ? styles.middle : styles.high
 
-  return <div className={styles.matchingGameBox}>
-    <div className={`${styles.gameOnBoard} ${isOnBoarding ? styles.active : styles.inactive}`}>
-      <h3 className={styles.onBoardTitle}>쉼터 아이들 특징 맞추기 게임</h3>
-      <MatchingOnBoard />
-    </div>
+  return <div className={styles.matchingGameWrapper}>
 
-    <div className={`${styles.cardWrapper} ${levelStyle}`}>
-      {
-        cards.map((card, index): any => {
-          return <div key={index}
-            className={`${styles.card} ${card.isActive ? styles.active : ''}`}
-            onClick={() => clickCard(card)}>
-            {
-              card.isActive ? <div className={styles.back}>
-                {`back:: ${card.id}::${card.name}`}
-              </div> : <div className={styles.front}>
-                {`front:: ${card.id}::${card.name}`}
-              </div>
-            }
-          </div>
-        })
-      }
+    {
+      isPc ?  <div className={styles.matchingGameButtonWrapper}>
+        <MatchingGameButton
+          title={'힌트보기'}
+          onClick={() => {
+            if (useHint) return
+            setUseHint(true)
+            setTimeout(() => { setUseHint(false) }, 3000)
+          }}
+        />
+        <MatchingGameButton
+          title={'다시하기'}
+          onClick={() => {
+            setUseHint(false)
+            setRetry(!retry)
+          }}
+        />
+      </div> : <></>
+    }
+    <div className={styles.matchingGameBox}>
+      <div className={`${styles.gameOnBoard} ${isOnBoarding ? styles.active : styles.inactive}`}>
+        <h3 className={styles.onBoardTitle}>쉼터 아이들 특징 맞추기 게임</h3>
+        <MatchingOnBoard />
+      </div>
+
+      <div className={`${styles.cardWrapper} ${levelStyle}`}>
+        {
+          cards.map((card, index): any => {
+            return <MatchingCard
+              key={index}
+              id={card.id}
+              level={level}
+              name={card.name}
+              url={card.url}
+              isActive={card.isActive}
+              type={card.type}
+              onClick={() => clickCard(card)}
+            />
+          })
+        }
+      </div>
     </div>
   </div>
 }

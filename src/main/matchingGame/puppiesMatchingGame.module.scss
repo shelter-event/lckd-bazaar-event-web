@@ -1,9 +1,7 @@
 @import "../../styles/common.scss";
 
-
 .puppiesMatchingGameBox {
   margin: 0 auto;
-
 
   @include pc {
     max-width: 1440px;
@@ -27,6 +25,10 @@
     color: #000;
     font-size: 32px;
     font-weight: 700;
+
+    @include mobile {
+      font-size: 14px;
+    }
   }
 
   .introduction {
@@ -44,63 +46,141 @@
     @include mobile {
       margin-top: 12px;
       margin-bottom: 24px;
-    }
-  }
 
-  .matchingLevelButtonWrapper {
-    display: flex;
-    gap: 25px;
+      font-size: 11px;
+      font-weight: 400;
+      color: #878787;
+    }
   }
 
 }
 
+
+.matchingButtonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 8px;
+
+  @include pc {
+    padding-right: 150px;
+    padding-bottom: 20px;
+    justify-content: end;
+    align-items: center;
+  }
+}
+
+
 .matchingLevelButton {
-  cursor: pointer;
-  padding: 20px 44px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 12px;
   background-color: #e4e4e4;
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  @include pc {
+    padding: 20px 30px;
+  }
+
+  @include mobile {
+    width: 48px;
+    height: 48px;
+  }
+
+  &.high {
+    background-color: #FF6726;
+  }
+
+  &.row {
+    background-color: #26A4FF;
+  }
 
   .level {
-    font-size: 32px;
-    font-weight: 700;
-  }
-
-  .separator {
-    font-size: 32px;
-    font-weight: 100;
-
-  }
-
-  .cellNumber {
+    color: #fff;
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 700;
 
+    @include mobile {
+      font-size: 14px;
+    }
   }
-
 }
 
 .matchingGameButton {
   cursor: pointer;
-  padding: 20px 50px;
   display: inline-block;
+  border: 1px solid $mainColor;
   border-radius: 12px;
-  background-color: #e4e4e4;
 
+  padding: 20px 50px;
+
+  color: $mainColor;
   font-size: 32px;
   font-weight: 500;
+
+  @include mobile {
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.matchingGameWrapper {
+  position: relative;
+  margin: 0 auto;
+
+  @include pc {
+    width: 80vw;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #F7F3C2;
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+
+  .matchingGameButtonWrapper {
+    position: absolute;
+    top: 20px;
+    right: 1vw;
+    width: 14vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .matchingGameButton {
+      text-align: center;
+      padding: 20px 0;
+
+    }
+  }
+
 }
 
 .matchingGameBox {
   position: relative;
-  border-radius: 20px;
   background-color: #E4E4E4;
-  max-width: 1440px;
-  width: 100%;
+  margin: 0 auto;
+
+  @include pc {
+    width: 48vw;
+  }
+
+  @include mobile {
+    width: 80vw;
+    border-radius: 20px;
+  }
 
   .gameOnBoard {
-    // position: absolute;
-
     &.active {
       display: block;
     }
@@ -148,66 +228,61 @@
   .cardWrapper {
     display: grid;
     box-sizing: border-box;
-    gap: 10px;
-    padding: 10px;
+
+    column-gap: 1vw;
+    row-gap: 1vw;
+    padding: 1vw;
+    margin: 0 auto;
+    justify-content: center;
+
+    @include mobile {
+      column-gap: 4vw;
+      row-gap: 4vw;
+      padding: 4vw;
+    }
 
     &.row {
       grid-template-columns: 1fr 1fr;
     }
 
-    &.middle {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
     &.high {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    .card {
-      cursor: pointer;
-      box-sizing: border-box;
-      border: solid 1px black;
-      height: 100px;
-
-      transition: transform 0.5s;
-
-      &.active {
-        transform: rotateY(180deg);
-      }
-
-      .back {
-        transform: rotateY(180deg);
-      }
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 }
 
 .matchingCard {
-  width: 100%;
-  height: 100%;
-
+  margin: 0 auto;
   box-sizing: border-box;
   border-radius: 20px;
 
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  transition: transform 0.5s;
+  cursor: pointer;
+
+  &.active {
+    transform: rotateY(180deg);
+  }
+
+  .back {
+    transform: rotateY(180deg);
+  }
 
   &.back {
     background-color: #FFA726;
     border: 5px solid #fff;
-
   }
 
   &.name {
     flex-direction: column;
     border: 5px solid #FFA726;
     background-color: #fff;
-    gap: 30px;
 
     .name {
       color: #FFA726;
-      font-size: 40px;
       font-weight: 700;
     }
 
@@ -226,31 +301,157 @@
   }
 
   .matchingCardIconWrapper {
-    width: 90px;
-    height: 90px;
     box-sizing: border-box;
     border-radius: 100px;
     background-color: #FFD9A1;
-    padding: 21px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     svg {
-      width: 48px;
-      height: 48px;
-
       path {
         fill: #FFA726;
       }
+    }
+  }
 
+  @include pc {
+    &.row {
+      width: 22.5vw;
+      height: 22.5vw;
+
+      &.name {
+        gap: 2.083vw;
+
+        .name {
+          font-size: 2.5rem;
+        }
+      }
+
+      .matchingCardIconWrapper {
+        width: 6.250vw;
+        height: 6.250vw;
+
+        svg {
+          width: 3.333vw;
+          height: 3.333vw;
+        }
+
+        &.large {
+          width: 9.444vw;
+          height: 9.444vw;
+
+          svg {
+            width: 5vw;
+            height: 5vw;
+          }
+        }
+      }
     }
 
-    &.large {
-      width: 136px;
-      height: 136px;
-      padding: 32px;
+    &.high {
+      width: 10.556vw;
+      height: 10.556vw;
 
-      svg {
-        width: 72px;
-        height: 72px;
+      &.name {
+        gap: 1.0415vw;
+
+        .name {
+          font-size: 1.25rem;
+
+          @include mobile {
+            font-size: .5rem;
+          }
+        }
+      }
+
+      .matchingCardIconWrapper {
+        width: 3.125vw;
+        height: 3.125vw;
+
+        svg {
+          width: 1.6665vw;
+          height: 1.6665vw;
+        }
+
+        &.large {
+          width: 4.722vw;
+          height: 4.722vw;
+
+          svg {
+            width: 2.5vw;
+            height: 2.5vw;
+          }
+        }
+      }
+    }
+  }
+
+  @include mobile {
+    &.row {
+      width: 33.333vw;
+      height: 33.333vw;
+
+      &.name {
+        gap: 2.083vw;
+
+        .name {
+          font-size: 1.25rem;
+        }
+      }
+
+      .matchingCardIconWrapper {
+        width: 9.2591666669vw;
+        height: 9.2591666669vw;
+
+        svg {
+          width: 4.9377284001vw;
+          height: 4.9377284001vw;
+        }
+
+        &.large {
+          width: 13.9909712003vw;
+          height: 13.9909712003vw;
+
+          svg {
+            width: 7.4073333335vw;
+            height: 7.4073333335vw;
+          }
+        }
+      }
+    }
+
+    &.high {
+      width: 15.6665vw;
+      height: 15.6665vw;
+
+      &.name {
+        gap: 1.0415vw;
+
+        .name {
+          font-size: 0.75rem;
+        }
+      }
+
+      .matchingCardIconWrapper {
+        width: 4.6295833334vw;
+        height: 4.6295833334vw;
+
+        svg {
+          width: 2.4688642vw;
+          height: 2.4688642vw;
+        }
+
+        &.large {
+          width: 6.9954856002vw;
+          height: 6.9954856002vw;
+
+          svg {
+            width: 3.7036666668vw;
+            height: 3.7036666668vw;
+          }
+        }
       }
     }
   }
