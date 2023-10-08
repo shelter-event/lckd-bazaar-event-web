@@ -18,7 +18,7 @@ const LCKD = () => {
         LCKD에 머무르는 아이들은 일시적으로 갈곳이 없어 모여있는 장소이며 임보 및 입양처를 기다리고 있습니다.
       </span>
 
-      <div className={styles.featureWrapper}>
+      <div className={styles.featureWrapper} aria-label="LCKD에서 하는 일">
         <FeatureBox
           title={'유기 동물 구조, 치료 및 보호\nㅤ'}
           type={FeatureType.HEALING}

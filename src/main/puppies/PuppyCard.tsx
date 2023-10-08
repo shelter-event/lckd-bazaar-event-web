@@ -109,6 +109,7 @@ const PuppyCard = (puppy: PuppyParameter) => {
       alt={puppy.name}
       loading="lazy"
       decoding="async"
+      aria-label='LCKD에서 보호중인 강아지 사진입니다.'
     />
     <div className={styles.featureSelectStatusBar}>
       {
