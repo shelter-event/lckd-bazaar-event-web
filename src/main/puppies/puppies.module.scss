@@ -81,9 +81,105 @@
       &.moveInstagram {
         text-decoration: none;
         color: inherit;
+        position: relative;
 
         &:hover {
           text-decoration: none;
+        }
+
+        &.moveInstagramType0 {
+          background-size: 115%;
+          background-position: -10px -10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: start;
+          padding: 2.22vw;
+          gap: 1.389vw;
+
+          .moveInstagramSubText {
+            color: #6E4A00;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 150%;
+
+            @include mobile {
+              font-size: 11px;
+            }
+          }
+
+          .moveInstagramMainText {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            span {
+              color: #7C5F22;
+              font-size: 18px;
+              font-weight: 400;
+
+              @include mobile {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+
+        &.moveInstagramType1 {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          background-color: #F7F3C2;
+          gap: 3.056vw;
+
+          &.moveInstagramType2 {
+            gap: 1.111vw;
+          }
+
+          svg {
+            position: absolute;
+            display: block;
+            width: 2.5vw;
+            height: 2.5vw;
+            top: 2.222vw;
+            right: 1.389vw;
+
+            @include mobile {
+              width: 4vw;
+              height: 4vw;
+              top: 4vw;
+              right: 3vw;
+
+            }
+          }
+
+          .moveInstagramImage1 {
+            width: 13.056vw;
+          }
+
+          .moveInstagramSubText {
+            color: #6E4A00;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 150%;
+
+            @include mobile {
+              font-size: 11px;
+            }
+          }
+
+          .moveInstagramMainText {
+            color: #7C5F22;
+            font-size: 18px;
+            font-weight: 400;
+
+            @include mobile {
+              font-size: 10px;
+            }
+          }
         }
       }
 
@@ -347,7 +443,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        
+
         @include mobile {
           align-items: center;
           flex-direction: row;
@@ -376,7 +472,7 @@
       .featureBox {
         display: flex;
         flex-direction: column;
-        
+
         @include pc {
           margin-top: 28px;
           gap: 18px;
