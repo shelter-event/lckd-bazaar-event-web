@@ -87,10 +87,11 @@
         }
       }
 
-
       box-sizing: border-box;
       border-radius: 20px;
       background-color: #fff;
+      border: 1px solid #F0F0F0;
+      box-shadow: 2px 2px 8px 0px rgba(125, 125, 125, 0.15);
 
       @include pc {
         width: 32.268%;
@@ -131,7 +132,11 @@
           gap: 8px;
 
           @include mobile {
-            gap: 2px;
+            display: flex;
+            flex-direction: row;
+            align-items: end;
+            justify-content: space-between;
+            gap: 8px;
           }
 
           .name {
@@ -143,7 +148,7 @@
             }
 
             @include mobile {
-              font-size: 18px;
+              font-size: 14px;
             }
           }
 
@@ -180,7 +185,7 @@
       .profileImage {
         width: 100%;
         vertical-align: bottom;
-        background-color: #FFE4AC;
+        background-color: #F7F3C2;
         // background-color: rgb(255, 204, 204);
       }
 
@@ -247,7 +252,8 @@
   .more {
     width: 50%;
     max-width: 464px;
-    padding: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     margin: 0 auto;
     margin-top: 24px;
 
@@ -255,8 +261,8 @@
     cursor: pointer;
     display: block;
 
-    color: #8C5E00;
-    background-color: #E4FFD8;
+    color: #fff;
+    background-color: #FFAF0C;
     text-align: center;
 
     font-size: 32px;

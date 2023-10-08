@@ -24,6 +24,7 @@ const Main = () => {
   return <div style={style}>
     <Banner />
     <LCKD />
+    {isPc ? <></> : <div style={{height: '2px', background: '#f5f5f5'}}>&nbsp;</div>}
     <Puppies />
     {
       isPc ? <MatchingMatchingGame /> : <></>

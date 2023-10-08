@@ -42,10 +42,10 @@ const Puppies = () => {
     setPuppies(puppyParameters)
   }
 
-  return <div style={{ backgroundColor: '#F2FFEC' }}>
+  return <div>
     <div className={styles.puppiesWrapper}>
       <h2 className={styles.title}>쉼터 아이들 소개</h2>
-      <span className={styles.introduction}>쉼터에 있는 아이들을 소개합니다.</span>
+      <span className={styles.introduction}>{isPc ? '쉼터에 있는 아이들을 소개합니다.' : ''}</span>
       <div className={styles.cardWrapper}>
         <Link to={'https://www.instagram.com/helpshelter_pf/'} target='_blank' className={`${styles.card} ${styles.moveInstagram}`}>
           더 많은 친구들이 보고싶으신가요?
