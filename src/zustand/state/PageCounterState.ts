@@ -24,7 +24,6 @@ export const usePageCounterStore = create<PageCounterState>()(
         },
 
         getVisitPageCounter: async ({ page }: any) => {
-          return
           set({
             mainVisitCounter: {
               data: {
@@ -50,7 +49,6 @@ export const usePageCounterStore = create<PageCounterState>()(
         },
 
         visitPage: async ({ page }: any) => {
-          return
           try { await visitPage({ page }) }
           catch (error) { /** do nothing */ }
         },

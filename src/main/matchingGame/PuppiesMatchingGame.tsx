@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import MatchingGame from './MatchingGame'
 import { MatchingGameButton, MatchingLevelButton, MatchingLevelButtonType } from './MatchingGameButton'
 import styles from './puppiesMatchingGame.module.scss'
+import { MatchingBackCard, MatchingImageCard, MatchingNameCard } from './MatchingCard'
 
 const MatchingMatchingGame = () => {
   const [level, setLevel] = useState(MatchingLevelButtonType.ROW)
@@ -35,7 +36,7 @@ const MatchingMatchingGame = () => {
       />
     </div>
 
-    <br />
+
     <div>
       <MatchingGameButton
         title={'힌트보기'}
@@ -51,6 +52,25 @@ const MatchingMatchingGame = () => {
         title={'다시하기'}
         onClick={() => setRetry(!retry)}
       />
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <div style={{ backgroundColor: 'grey', padding: '20px' }}>
+      <div style={{ width: '324px', height: '324px' }}>
+        <MatchingBackCard />
+      </div>
+      <br /><br />&nbsp;
+      <div style={{ width: '324px', height: '324px' }}>
+        <MatchingImageCard id={1} name={'가을이'} url={require('../../assets/main/matching/card/가을.webp')} />
+      </div>
+      <br /><br />&nbsp;
+      <div style={{ width: '324px', height: '324px' }}>
+        <MatchingNameCard id={1} name={'가을이'} />
+      </div>
+      <br /><br />&nbsp;
+
     </div>
 
     <MatchingGame

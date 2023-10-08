@@ -111,11 +111,11 @@ const PuppyCard = (puppy: PuppyParameter) => {
       decoding="async"
       aria-label='LCKD에서 보호중인 강아지 사진입니다.'
     />
-    <div className={styles.featureSelectStatusBar}>
+    {/* <div className={styles.featureSelectStatusBar}>
       {
         Array(featureCount).fill(0).map((i, idx) => <div key={idx} className={`${selectedFeature === idx ? styles.active : ''}`}>&nbsp;</div>)
       }
-    </div>
+    </div> */}
     <div className={styles.featMoreWrapper} onClick={() => setIsDetail(true)}>
       <span></span>
       <span className={styles.featureMoreTitle}>자세히 보기</span>
