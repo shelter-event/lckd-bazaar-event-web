@@ -3,13 +3,23 @@ import LCKD from "./LCKD";
 import { useMediaQuery } from "react-responsive";
 import MatchingMatchingGame from "./matchingGame/PuppiesMatchingGame";
 import Puppies from "./puppies/Puppies";
+import { usePageCounterStore } from "../zustand/state/PageCounterState";
+import { useEffect, useState } from "react";
 
 const Main = () => {
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
   });
-
   const style = isPc ? mainPCStyle : mainMobileStyle
+  const [init, setInit] = useState(false)
+  const { getVisitPageCounter, visitPage } = usePageCounterStore()
+
+  useEffect(() => {
+    if (init) return
+    setInit(true)
+    visitPage({ page: 'Main' })
+    getVisitPageCounter({ page: 'Main' })
+  }, [])
 
   return <div style={style}>
     <Banner />

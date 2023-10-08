@@ -10,7 +10,6 @@ const MatchingMatchingGame = () => {
   const [isOnBoarding, setIsOnBoarding] = useState(false)
 
   useEffect(() => {
-    console.log(`level: ${level}`)
   }, [level])
 
   return <div className={styles.puppiesMatchingGameBox}>

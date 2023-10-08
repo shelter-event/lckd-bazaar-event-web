@@ -32,7 +32,7 @@ class Http {
     const http = axios.create({
       headers,
       baseURL: process.env.REACT_APP_PROXY_HOST,
-      withCredentials: true,
+      withCredentials: false,
       proxy: { host, port },
     })
 
