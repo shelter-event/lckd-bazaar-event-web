@@ -188,8 +188,8 @@ const GoInstagramCardType1 = ({ isPc }: any) => {
       <span className={styles.moveInstagramSubText}>
         보호소에 있는 <br />
         더 많은 아이들이 궁금하신가요?
-      </span><br />
-      {isPc ? <br /> : <></>}
+      </span>
+      {isPc ? <div style={{height: '16px'}}></div> : <br />}
       <span className={styles.moveInstagramMainText}>
         지금 {isPc ? '바로 ' : ''}인스타그램에서 확인하세요!
       </span>
@@ -215,7 +215,7 @@ const GoInstagramCardType2 = ({ isPc }: any) => {
         보호소에 있는 <br />
         더 많은 아이들이 궁금하신가요?
       </span>
-      {isPc ? <div style={{height: '16px'}}></div> : <></>}
+      {isPc ? <div style={{height: '16px'}}></div> : <br />}
       <span className={styles.moveInstagramMainText}>
         지금 {isPc ? '바로 ' : ''}인스타그램에서 확인하세요!
       </span>
