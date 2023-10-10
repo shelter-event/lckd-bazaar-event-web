@@ -26,6 +26,9 @@ const MatchingGame = ({
     new CardParameter(5, '훈이', require('../../assets/main/matching/card/훈이.webp')),
     new CardParameter(6, '마리', require('../../assets/main/matching/card/마리.webp')),
     new CardParameter(7, '돌체', require('../../assets/main/matching/card/돌체.webp')),
+    new CardParameter(8, '깜순', require('../../assets/main/matching/card/깜순.webp')),
+    new CardParameter(9, '햇살', require('../../assets/main/matching/card/햇살.webp')),
+    new CardParameter(10, '쿠키', require('../../assets/main/matching/card/쿠키.webp')),
   ])
 
   const [clickCardIds, setClickCardIds] = useState([] as number[])
