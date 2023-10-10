@@ -13,7 +13,7 @@ const Banner = () => {
 
   useEffect(() => {
     if (mainVisitCounter.loading) return
-    console.log(mainVisitCounter.data)
+    // console.log(mainVisitCounter.data)
   }, [mainVisitCounter])
 
   return <div
