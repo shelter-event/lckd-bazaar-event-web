@@ -3,9 +3,11 @@ import { MatchingLevelButtonType } from './MatchingGameButton';
 import styles from './puppiesMatchingGame.module.scss'
 
 const MatchingCard = ({ isActive, id, name, url, type, level, onClick }: any) => {
-  return <div onClick={onClick}>
-    {isActive ? type === 'image' ? <MatchingImageCard id={id} name={name} url={url} level={level} />
-      : <MatchingNameCard id={id} name={name} level={level} /> : <MatchingBackCard level={level} />}
+  return <div onClick={onClick} className={`${styles.matchingCardBox} ${isActive ? styles.active : ''}`}>
+    <MatchingBackCard level={level} />
+    {type === 'image' ?
+      <MatchingImageCard id={id} name={name} url={url} level={level} />
+      : <MatchingNameCard id={id} name={name} level={level} />}
   </div>
 }
 

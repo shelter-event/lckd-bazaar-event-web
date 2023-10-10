@@ -251,205 +251,220 @@
   }
 }
 
-.matchingCard {
-  margin: 0 auto;
-  box-sizing: border-box;
-  border-radius: 20px;
+.matchingCardBox {
+  transition: transform 0.3s;
+  transform: rotateY(180deg);
 
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  .matchingCard.back {
+    display: inline-flex;
+  }
 
-  transition: transform 0.5s;
-  cursor: pointer;
+  .matchingCard.name,
+  .matchingCard.image {
+    display: none;
+  }
 
   &.active {
-    transform: rotateY(180deg);
-  }
-
-  .back {
-    transform: rotateY(180deg);
-  }
-
-  &.back {
-    background-color: #FFA726;
-    border: 5px solid #fff;
-  }
-
-  &.name {
-    flex-direction: column;
-    border: 5px solid #FFA726;
-    background-color: #fff;
-
-    .name {
-      color: #FFA726;
-      font-weight: 700;
+  transform: rotateY(0deg);
+    .matchingCard.back {
+      display: none;
     }
-
-  }
-
-  &.image {
-    border: 5px solid #FFA726;
-    background-color: #fff;
-
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
+    
+    .matchingCard.name,
+    .matchingCard.image {
+      display: inline-flex;
     }
-
   }
 
-  .matchingCardIconWrapper {
+  .matchingCard {
+    margin: 0 auto;
     box-sizing: border-box;
-    border-radius: 100px;
-    background-color: #FFD9A1;
+    border-radius: 20px;
 
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
-    svg {
-      path {
-        fill: #FFA726;
+    &.back {
+      background-color: #FFA726;
+      border: 5px solid #fff;
+    }
+
+    &.name {
+      flex-direction: column;
+      border: 5px solid #FFA726;
+      background-color: #fff;
+
+      .name {
+        color: #FFA726;
+        font-weight: 700;
       }
     }
-  }
 
-  @include pc {
-    &.row {
-      width: 22.5vw;
-      height: 22.5vw;
+    &.image {
+      border: 5px solid #FFA726;
+      background-color: #fff;
 
-      &.name {
-        gap: 2.083vw;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+      }
 
-        .name {
-          font-size: 2.5rem;
+    }
+
+    .matchingCardIconWrapper {
+      box-sizing: border-box;
+      border-radius: 100px;
+      background-color: #FFD9A1;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        path {
+          fill: #FFA726;
+        }
+      }
+    }
+
+    @include pc {
+      &.row {
+        width: 22.5vw;
+        height: 22.5vw;
+
+        &.name {
+          gap: 2.083vw;
+
+          .name {
+            font-size: 2.5rem;
+          }
+        }
+
+        .matchingCardIconWrapper {
+          width: 6.250vw;
+          height: 6.250vw;
+
+          svg {
+            width: 3.333vw;
+            height: 3.333vw;
+          }
+
+          &.large {
+            width: 9.444vw;
+            height: 9.444vw;
+
+            svg {
+              width: 5vw;
+              height: 5vw;
+            }
+          }
         }
       }
 
-      .matchingCardIconWrapper {
-        width: 6.250vw;
-        height: 6.250vw;
+      &.high {
+        width: 10.556vw;
+        height: 10.556vw;
 
-        svg {
-          width: 3.333vw;
-          height: 3.333vw;
+        &.name {
+          gap: 1.0415vw;
+
+          .name {
+            font-size: 1.25rem;
+
+            @include mobile {
+              font-size: .5rem;
+            }
+          }
         }
 
-        &.large {
-          width: 9.444vw;
-          height: 9.444vw;
+        .matchingCardIconWrapper {
+          width: 3.125vw;
+          height: 3.125vw;
 
           svg {
-            width: 5vw;
-            height: 5vw;
+            width: 1.6665vw;
+            height: 1.6665vw;
+          }
+
+          &.large {
+            width: 4.722vw;
+            height: 4.722vw;
+
+            svg {
+              width: 2.5vw;
+              height: 2.5vw;
+            }
           }
         }
       }
     }
 
-    &.high {
-      width: 10.556vw;
-      height: 10.556vw;
+    @include mobile {
+      &.row {
+        width: 33.333vw;
+        height: 33.333vw;
 
-      &.name {
-        gap: 1.0415vw;
+        &.name {
+          gap: 2.083vw;
 
-        .name {
-          font-size: 1.25rem;
+          .name {
+            font-size: 1.25rem;
+          }
+        }
 
-          @include mobile {
-            font-size: .5rem;
+        .matchingCardIconWrapper {
+          width: 9.2591666669vw;
+          height: 9.2591666669vw;
+
+          svg {
+            width: 4.9377284001vw;
+            height: 4.9377284001vw;
+          }
+
+          &.large {
+            width: 13.9909712003vw;
+            height: 13.9909712003vw;
+
+            svg {
+              width: 7.4073333335vw;
+              height: 7.4073333335vw;
+            }
           }
         }
       }
 
-      .matchingCardIconWrapper {
-        width: 3.125vw;
-        height: 3.125vw;
+      &.high {
+        width: 15.6665vw;
+        height: 15.6665vw;
 
-        svg {
-          width: 1.6665vw;
-          height: 1.6665vw;
-        }
+        &.name {
+          gap: 1.0415vw;
 
-        &.large {
-          width: 4.722vw;
-          height: 4.722vw;
-
-          svg {
-            width: 2.5vw;
-            height: 2.5vw;
+          .name {
+            font-size: 0.75rem;
           }
         }
-      }
-    }
-  }
 
-  @include mobile {
-    &.row {
-      width: 33.333vw;
-      height: 33.333vw;
-
-      &.name {
-        gap: 2.083vw;
-
-        .name {
-          font-size: 1.25rem;
-        }
-      }
-
-      .matchingCardIconWrapper {
-        width: 9.2591666669vw;
-        height: 9.2591666669vw;
-
-        svg {
-          width: 4.9377284001vw;
-          height: 4.9377284001vw;
-        }
-
-        &.large {
-          width: 13.9909712003vw;
-          height: 13.9909712003vw;
+        .matchingCardIconWrapper {
+          width: 4.6295833334vw;
+          height: 4.6295833334vw;
 
           svg {
-            width: 7.4073333335vw;
-            height: 7.4073333335vw;
+            width: 2.4688642vw;
+            height: 2.4688642vw;
           }
-        }
-      }
-    }
 
-    &.high {
-      width: 15.6665vw;
-      height: 15.6665vw;
+          &.large {
+            width: 6.9954856002vw;
+            height: 6.9954856002vw;
 
-      &.name {
-        gap: 1.0415vw;
-
-        .name {
-          font-size: 0.75rem;
-        }
-      }
-
-      .matchingCardIconWrapper {
-        width: 4.6295833334vw;
-        height: 4.6295833334vw;
-
-        svg {
-          width: 2.4688642vw;
-          height: 2.4688642vw;
-        }
-
-        &.large {
-          width: 6.9954856002vw;
-          height: 6.9954856002vw;
-
-          svg {
-            width: 3.7036666668vw;
-            height: 3.7036666668vw;
+            svg {
+              width: 3.7036666668vw;
+              height: 3.7036666668vw;
+            }
           }
         }
       }
