@@ -141,6 +141,18 @@ export const puppyParameters = [
   //   null,
   //   true,
   // ),
+  // new PuppyParameter(
+  //   11, '라니', '#23_06',
+  //   require('../../assets/main/puppies/modal_profile/라니.webp'),
+  //   require('../../assets/main/puppies/front_profile/라니.webp'),
+  //   null,
+  //   '자기보다 작거나 어린 친구들과 잘 놀아주는 착한 언니스타일!',
+  //   '사람에겐 낯가림이 조금 심해요. 하지만, 마음을 열면 누구부다 애교쟁이가 된답니다.',
+  //   '친구들이랑 뛰어노는걸 정말 좋아해요.',
+  //   null,
+  //   '미용 목욕 다 잘해요! 하지만 지성피부라 목욕 후 꼼꼼한 드라이는 필수!',
+  //   false,
+  // ),
 ]
 
 // export const families = [
