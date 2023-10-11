@@ -4,10 +4,12 @@ import { PuppyParameter, puppyParameters } from './PuppiesParameters';
 import PuppyCard, { GoInstagramCard } from './PuppyCard';
 import styles from './puppies.module.scss';
 import { Link } from 'react-router-dom';
+import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
 
 const Puppies = () => {
   const [puppies, setPuppies] = useState([] as PuppyParameter[])
   const [isMore, setIsMore] = useState(false)
+  const { click } = useClickCounterStore()
 
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
@@ -70,7 +72,10 @@ const Puppies = () => {
       </div>
       {
         isMore ? '' :
-          <div className={styles.more} onClick={(e: any) => showAllPuppies()}>
+          <div className={styles.more} onClick={(e: any) => {
+            click({clickId: 'Main - 쉼터 아이들 소개 - 더보기'})
+            showAllPuppies()
+          }}>
             <span>더보기</span>
           </div>
       }

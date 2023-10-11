@@ -6,6 +6,7 @@ import MatchingCard from './MatchingCard';
 import { MatchingGameButton, MatchingLevelButtonType } from './MatchingGameButton';
 import MatchingOnBoard from './MatchingOnBoard';
 import styles from './puppiesMatchingGame.module.scss';
+import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
 
 const MatchingGame = ({
   level = MatchingLevelButtonType.ROW,
@@ -34,6 +35,7 @@ const MatchingGame = ({
   const [clickCardIds, setClickCardIds] = useState([] as number[])
   const [clickCount, setClickCount] = useState(0)
   const [successCardIds, setSuccessCardIds] = useState([] as number[])
+  const { click } = useClickCounterStore()
 
   useEffect(() => {
     shuffleCards()
@@ -132,6 +134,7 @@ const MatchingGame = ({
         <MatchingGameButton
           title={'힌트보기'}
           onClick={() => {
+            click({clickId: 'Main - 쉼터 아이들 맞추기 게임 - 힌트보기'})
             if (useHint) return
             setUseHint(true)
             setTimeout(() => { setUseHint(false) }, 3000)
@@ -140,6 +143,7 @@ const MatchingGame = ({
         <MatchingGameButton
           title={'다시하기'}
           onClick={() => {
+            click({clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기'})
             setUseHint(false)
             setRetry(!retry)
           }}

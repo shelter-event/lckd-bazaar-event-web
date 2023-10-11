@@ -3,12 +3,14 @@ import MatchingGame from './MatchingGame'
 import { MatchingGameButton, MatchingLevelButton, MatchingLevelButtonType } from './MatchingGameButton'
 import styles from './puppiesMatchingGame.module.scss'
 import { useMediaQuery } from 'react-responsive'
+import { useClickCounterStore } from '../../zustand/state/ClickCounterState'
 
 const MatchingMatchingGame = () => {
   const [level, setLevel] = useState(MatchingLevelButtonType.ROW)
   const [useHint, setUseHint] = useState(false)
   const [retry, setRetry] = useState(false)
   const [isOnBoarding, setIsOnBoarding] = useState(false)
+  const { click } = useClickCounterStore()
 
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
@@ -28,6 +30,7 @@ const MatchingMatchingGame = () => {
     <div className={styles.matchingButtonWrapper}>
       <MatchingLevelButton
         onClick={() => {
+          click({clickId: 'Main - 쉼터 아이들 맞추기 게임 - 상'})
           setUseHint(false)
           setLevel(MatchingLevelButtonType.HIGH)
         }}
@@ -35,6 +38,7 @@ const MatchingMatchingGame = () => {
       />
       <MatchingLevelButton
         onClick={() => {
+          click({clickId: 'Main - 쉼터 아이들 맞추기 게임 - 하'})
           setUseHint(false)
           setLevel(MatchingLevelButtonType.ROW)
         }}
@@ -46,6 +50,7 @@ const MatchingMatchingGame = () => {
           <MatchingGameButton
             title={'힌트보기'}
             onClick={() => {
+              click({clickId: 'Main - 쉼터 아이들 맞추기 게임 - 힌트보기'})
               if (useHint) return
               setUseHint(true)
               setTimeout(() => { setUseHint(false) }, 3000)
@@ -54,6 +59,7 @@ const MatchingMatchingGame = () => {
           <MatchingGameButton
             title={'다시하기'}
             onClick={() => {
+              click({clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기'})
               setUseHint(false)
               setRetry(!retry)
             }}

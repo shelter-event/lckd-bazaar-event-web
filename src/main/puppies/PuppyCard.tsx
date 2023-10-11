@@ -19,12 +19,15 @@ import { ReactComponent as Arrow1 } from '../../assets/main/puppies/go_instagram
 import GoInstagramBackgroundImage from '../../assets/main/puppies/go_instagram/go_instagram_background.webp';
 import GoInstagramType1Image from '../../assets/main/puppies/go_instagram/go_instagram_01.webp';
 import GoInstagramType2Image from '../../assets/main/puppies/go_instagram/go_instagram_02.webp';
+import { useClickCounterStore } from "../../zustand/state/ClickCounterState";
+import { click } from "../../api/ClickCountApi";
 
 const PuppyCard = (puppy: PuppyParameter) => {
   const [isDetail, setIsDetail] = useState(false)
   const [selectedFeature, setSelectedFeature] = useState(0)
   const [featureCount, setFeatureCount] = useState(5)
   const [featureIndexes, setFeatureIndexes] = useState([] as number[])
+  const { click } = useClickCounterStore()
 
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
@@ -124,7 +127,10 @@ const PuppyCard = (puppy: PuppyParameter) => {
         Array(featureCount).fill(0).map((i, idx) => <div key={idx} className={`${selectedFeature === idx ? styles.active : ''}`}>&nbsp;</div>)
       }
     </div> */}
-    <div className={styles.featMoreWrapper} onClick={() => setIsDetail(true)}>
+    <div className={styles.featMoreWrapper} onClick={() => {
+      click({clickId: `Main - 쉼터 아이들 소개 - ${puppy.name}`})
+      setIsDetail(true)
+    }}>
       <span></span>
       <span className={styles.featureMoreTitle}>자세히 보기</span>
       <FeatureMoreButton />
@@ -158,6 +164,8 @@ const GoInstagramCardType0 = ({ isPc }: any) => {
     target='_blank'
     className={`${styles.card} ${styles.moveInstagram} ${styles.moveInstagramType0}`}
     style={{ backgroundImage: `url(${GoInstagramBackgroundImage})` }}
+    rel="noopener noreferrer"
+    onClick={() => {click({clickId: 'Main - 쉼터 아이들 소개 - 인스타그램0'})}}
   >
     <span className={styles.moveInstagramSubText}>
       보호소에 있는 <br />
@@ -177,6 +185,8 @@ const GoInstagramCardType1 = ({ isPc }: any) => {
     to={'https://www.instagram.com/helpshelter_pf/'}
     target='_blank'
     className={`${styles.card} ${styles.moveInstagram} ${styles.moveInstagramType1}`}
+    rel="noopener noreferrer"
+    onClick={() => {click({clickId: 'Main - 쉼터 아이들 소개 - 인스타그램1'})}}
   >
     <Arrow1 />
     <img
@@ -202,6 +212,8 @@ const GoInstagramCardType2 = ({ isPc }: any) => {
     to={'https://www.instagram.com/helpshelter_pf/'}
     target='_blank'
     className={`${styles.card} ${styles.moveInstagram} ${styles.moveInstagramType1} ${styles.moveInstagramType2}`}
+    rel="noopener noreferrer"
+    onClick={() => {click({clickId: 'Main - 쉼터 아이들 소개 - 인스타그램2'})}}
   >
     <Arrow1 />
     <img
