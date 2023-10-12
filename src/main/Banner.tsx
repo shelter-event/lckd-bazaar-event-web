@@ -33,9 +33,9 @@ const Banner = () => {
         color: '#aaa',
         zIndex: 101,
       }}>
-        {`${mainVisitCounter.data.totalVisitCount > 0 ? `총 방문자: ${mainVisitCounter.data.totalVisitCount}` : ''}`}
+        {`${mainVisitCounter.data.totalVisitCount > 0 ? `총 방문자: ${mainVisitCounter.data.totalVisitCount + 1}` : ''}`}
         <br />
-        {`${mainVisitCounter.data.todayVisitCount > 0 ? `오늘 방문자: ${mainVisitCounter.data.totalVisitCount}` : ''}`}
+        {`${mainVisitCounter.data.todayVisitCount > 0 ? `오늘 방문자: ${mainVisitCounter.data.todayVisitCount + 1}` : ''}`}
       </div>
     }
     <div className={styles.textBox}>
