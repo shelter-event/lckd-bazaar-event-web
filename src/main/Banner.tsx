@@ -45,9 +45,9 @@ const Banner = () => {
         유기견 후원 <span className={styles.mainColor}>바자회</span>에 초대합니다.
       </h1>
       <span className={styles.name}>
-        장소: 태평역 인근 카페<br />
-        일자: 2023년 11월 4일 토요일<br />
-        주최: LCKD (비영리민간단체 유기동물 보호소)
+        <span className={styles.mainColor}>2023년 11월 4일</span> 토요일 11시 ~ 17시<br />
+        경기 성남시 수정구 탄천로 600 1층 <span className={styles.mainColor}>메종브레첼</span><br />
+        주최: <span className={styles.mainColor}>LCKD</span> (비영리민간단체 유기동물 보호소)
       </span>
     </div>
   </div>
