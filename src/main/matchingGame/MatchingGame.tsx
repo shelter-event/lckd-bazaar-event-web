@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import Modal from '../../common/Modal';
 import { shuffleArray } from '../../common/ShuffleArray';
+import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
+import { useMatchingGameStore } from '../../zustand/state/MatchingGameState';
 import { CardParameter, cardParameters, copyWithCard } from './CardParameters';
 import MatchingCard from './MatchingCard';
 import { MatchingGameButton, MatchingLevelButtonType } from './MatchingGameButton';
 import MatchingOnBoard from './MatchingOnBoard';
 import styles from './puppiesMatchingGame.module.scss';
-import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
 
 const MatchingGame = ({
   level = MatchingLevelButtonType.ROW,
@@ -35,11 +37,14 @@ const MatchingGame = ({
   const [clickCardIds, setClickCardIds] = useState([] as number[])
   const [clickCount, setClickCount] = useState(0)
   const [successCardIds, setSuccessCardIds] = useState([] as number[])
+  const [modalActiveStates, setModalActiveStates] = useState([false, false] as boolean[])
+  const [lotteryTexts, setLotteryTexts] = useState([
+    '0번째로 게임을 성공하였습니다.',
+    '바자회에 오셔서 상품을 받아가세요.'
+  ])
   const { click } = useClickCounterStore()
 
-  useEffect(() => {
-    shuffleCards()
-  }, [level])
+  const { postMatchingGameExecute, postLottery, matchingGameCounter, matchingGameLotteryIndex } = useMatchingGameStore()
 
   useEffect(() => {
     setCards((prevCards) => prevCards.map((card) => new CardParameter(card.id, card.name, card.url, false, card.type)))
@@ -62,6 +67,29 @@ const MatchingGame = ({
       ))
     }
   }, [useHint])
+
+  useEffect(() => {
+    if (cards.length !== successCardIds.length) return
+
+    setTimeout(() => {
+      setLotteryTexts([
+        `${matchingGameCounter.data + 1}번째로 게임에 성공하였습니다.`,
+        lotteryTexts[1],
+      ])
+      setModalActiveStates([true, modalActiveStates[1]])
+      setRetry(!retry)
+      postMatchingGameExecute()
+
+      if (matchingGameLotteryIndex.data.includes(matchingGameCounter.data + 1)) {
+        setModalActiveStates([modalActiveStates[0], true])
+        setLotteryTexts([
+          lotteryTexts[0],
+          `${matchingGameCounter.data + 1}번째로 게임에 성공하였습니다. \n 환영합니다.`
+        ])
+        postLottery({ name: 'LCKD' })
+      }
+    }, 320)
+  }, [successCardIds])
 
   const shuffleCards = () => {
     if (level === MatchingLevelButtonType.HIGH) {
@@ -128,13 +156,27 @@ const MatchingGame = ({
   const levelStyle = level === MatchingLevelButtonType.ROW ? styles.row : level === MatchingLevelButtonType.MIDDLE ? styles.middle : styles.high
 
   return <div className={styles.matchingGameWrapper}>
-
+    <Modal
+      style={{ display: modalActiveStates[0] ? 'flex' : 'none' }}
+      text={lotteryTexts[0]}
+      onClick={() => {
+        console.log(modalActiveStates)
+        setModalActiveStates([false, modalActiveStates[1]])
+      }}
+    />
+    <Modal
+      style={{ display: modalActiveStates[1] ? 'flex' : 'none' }}
+      text={lotteryTexts[1]}
+      onClick={() => {
+        setModalActiveStates([modalActiveStates[0], false])
+      }}
+    />
     {
-      isPc ?  <div className={styles.matchingGameButtonWrapper}>
+      isPc ? <div className={styles.matchingGameButtonWrapper}>
         <MatchingGameButton
           title={'힌트보기'}
           onClick={() => {
-            click({clickId: 'Main - 쉼터 아이들 맞추기 게임 - 힌트보기'})
+            click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 힌트보기' })
             if (useHint) return
             setUseHint(true)
             setTimeout(() => { setUseHint(false) }, 3000)
@@ -143,7 +185,7 @@ const MatchingGame = ({
         <MatchingGameButton
           title={'다시하기'}
           onClick={() => {
-            click({clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기'})
+            click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기' })
             setUseHint(false)
             setRetry(!retry)
           }}
