@@ -35,17 +35,17 @@ const MatchingMatchingGame = () => {
     <div className={styles.matchingButtonWrapper}>
       <MatchingLevelButton
         onClick={() => {
-          click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 상' })
           setUseHint(false)
           setLevel(MatchingLevelButtonType.HIGH)
+          click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 상' })
         }}
         type={MatchingLevelButtonType.HIGH}
       />
       <MatchingLevelButton
         onClick={() => {
-          click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 하' })
           setUseHint(false)
           setLevel(MatchingLevelButtonType.ROW)
+          click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 하' })
         }}
         type={MatchingLevelButtonType.ROW}
       />

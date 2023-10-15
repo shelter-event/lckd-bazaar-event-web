@@ -52,7 +52,7 @@ const MatchingGame = ({
     setSuccessCardIds([])
     setClickCardIds([])
     shuffleCards()
-  }, [retry])
+  }, [retry, level])
 
   useEffect(() => {
     if (useHint) {
@@ -185,9 +185,9 @@ const MatchingGame = ({
         <MatchingGameButton
           title={'다시하기'}
           onClick={() => {
-            click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기' })
             setUseHint(false)
             setRetry(!retry)
+            click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기' })
           }}
         />
       </div> : <></>
