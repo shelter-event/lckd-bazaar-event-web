@@ -4,6 +4,7 @@ import { ReactComponent as Like } from '../../assets/main/puppies/feature_like.s
 import { ReactComponent as PeopleManner } from '../../assets/main/puppies/feature_people_manner.svg';
 import { ReactComponent as ShowerManner } from '../../assets/main/puppies/feature_shower_manner.svg';
 import { ReactComponent as WalkingManner } from '../../assets/main/puppies/feature_walking_manner.svg';
+import { ReactComponent as CloseModal } from '../../assets/main/puppies/close_modal.svg';
 import Dimmed from '../../common/Dimmed';
 import { isNotBlank } from '../../common/Validation';
 import styles from './puppies.module.scss';
@@ -13,6 +14,7 @@ const PuppyDetailModal = ({ setIsDetail, puppy }: any) => {
   return <div className={styles.puppyDetailModalWrapper} onClick={(e: any) => { setIsDetail(false) }}>
     <Dimmed />
     <div className={styles.puppyDetailBox} onClick={(e: any) => { e.stopPropagation() }}>
+      <div className={styles.closeModal} onClick={() => { setIsDetail(false) }}><CloseModal aria-label='자세히 보기창 닫기' /></div>
       <img className={styles.puppyImage} src={puppy.mainImageUrl} alt={puppy.name} decoding='async' loading='lazy'
         aria-label='LCKD에서 보호중인 강이지의 사진입니다.'
       />
@@ -24,19 +26,19 @@ const PuppyDetailModal = ({ setIsDetail, puppy }: any) => {
         <div className={styles.featureBox}>
           {
             isNotBlank(puppy.health) ? <div>
-              <div> <Health aria-label='건강 상태'/></div>
+              <div> <Health aria-label='건강 상태' /></div>
               <span className={styles.featureContent}>{puppy.health}</span>
             </div> : <></>
           }
           {
             isNotBlank(puppy.dogManner) ? <div>
-              <div> <DogManner aria-label='강아지간 관계'/></div>
+              <div> <DogManner aria-label='강아지간 관계' /></div>
               <span className={styles.featureContent}>{puppy.dogManner}</span>
             </div> : <></>
           }
           {
             isNotBlank(puppy.peopleManner) ? <div>
-              <div> <PeopleManner aria-label='사람과의 관계'/></div>
+              <div> <PeopleManner aria-label='사람과의 관계' /></div>
               <span className={styles.featureContent}>{puppy.peopleManner}</span>
             </div> : <></>
           }
@@ -54,7 +56,7 @@ const PuppyDetailModal = ({ setIsDetail, puppy }: any) => {
           }
           {
             isNotBlank(puppy.showerManner) ? <div>
-              <div> <ShowerManner aria-label='샤워 매너'/></div>
+              <div> <ShowerManner aria-label='샤워 매너' /></div>
               <span className={styles.featureContent}>{puppy.showerManner}</span>
             </div> : <></>
           }

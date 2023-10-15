@@ -391,6 +391,30 @@
     border-radius: 20px;
     background-color: white;
 
+    .closeModal {
+      position: absolute;
+      display: flex;
+
+      cursor: pointer;
+      top: 40px;
+      right: 40px;
+      
+      width: 44px;
+      height: 44px;
+
+      justify-content: center;
+      align-items: center;
+
+      @include mobile {
+        top: 20px;
+        right: 20px;
+
+        svg {
+          stroke-width: 0;
+        }
+      }
+    }
+
     @include pc {
       width: 1000px;
       height: 450px;
