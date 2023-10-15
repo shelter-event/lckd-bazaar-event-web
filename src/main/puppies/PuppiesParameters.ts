@@ -153,6 +153,18 @@ export const puppyParameters = [
   //   null,
   //   true,
   // ),
+  // new PuppyParameter(
+  //   12, '국수', '#LCKD???',
+  //   require('../../assets/main/puppies/modal_profile/국수.webp'),
+  //   require('../../assets/main/puppies/front_profile/국수.webp'),
+  //   null,
+  //   null,
+  //   null,
+  //   null,
+  //   null,
+  //   null,
+  //   true,
+  // ),
 ]
 
 // export const families = [

@@ -24,4 +24,5 @@ export const cardParameters = [
   new CardParameter(9, '라니', require('../../assets/main/matching/card/라니.webp')),
   new CardParameter(10, '햇살', require('../../assets/main/matching/card/햇살.webp')),
   new CardParameter(11, '쿠키', require('../../assets/main/matching/card/쿠키.webp')),
+  new CardParameter(12, '국수', require('../../assets/main/matching/card/국수.webp')),
 ]
