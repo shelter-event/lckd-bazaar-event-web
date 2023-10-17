@@ -178,6 +178,10 @@ const MatchingGame = ({
           onClick={() => {
             click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 힌트보기' })
             if (useHint) return
+            else if (clickCount !== 0) {
+              alert('카드를 확인 중인 상태에서는 힌트보기가 불가능합니다.')
+              return
+            }
             setUseHint(true)
             setTimeout(() => { setUseHint(false) }, 3000)
           }}
