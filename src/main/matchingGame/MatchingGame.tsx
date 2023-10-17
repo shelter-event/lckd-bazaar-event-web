@@ -15,7 +15,8 @@ const MatchingGame = ({
   isOnBoarding,
   useHint = false,
   retry = false,
-  setUseHint, setRetry
+  clickCount = 0, 
+  setUseHint, setRetry, setClickCount,
 }: any) => {
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
@@ -35,7 +36,6 @@ const MatchingGame = ({
   ])
 
   const [clickCardIds, setClickCardIds] = useState([] as number[])
-  const [clickCount, setClickCount] = useState(0)
   const [successCardIds, setSuccessCardIds] = useState([] as number[])
   const [modalActiveStates, setModalActiveStates] = useState([false, false] as boolean[])
   const [lotteryTexts, setLotteryTexts] = useState([
@@ -116,7 +116,7 @@ const MatchingGame = ({
   const clickCard = (card: CardParameter) => {
     if (card.isActive || clickCount === 2) return
     const copyClickCardIds = [...clickCardIds, card.id]
-    setClickCount((prevCount) => prevCount + 1)
+    setClickCount((prevCount: number) => prevCount + 1)
     setClickCardIds(copyClickCardIds)
     setCopyCards(copyWithCard(card))
 
@@ -179,7 +179,7 @@ const MatchingGame = ({
             click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 힌트보기' })
             if (useHint) return
             else if (clickCount !== 0) {
-              alert('카드를 확인 중인 상태에서는 힌트보기가 불가능합니다.')
+              alert('카드를 확인 중인 상태에서는 힌트보기를 할 수 없어요!')
               return
             }
             setUseHint(true)
@@ -189,6 +189,10 @@ const MatchingGame = ({
         <MatchingGameButton
           title={'다시하기'}
           onClick={() => {
+            if (useHint) {
+              alert('힌트보기 상태에서는 다시하기를 할 수 없어요!')
+              return
+            }
             setUseHint(false)
             setRetry(!retry)
             click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기' })

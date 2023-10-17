@@ -10,6 +10,7 @@ const MatchingMatchingGame = () => {
   const [level, setLevel] = useState(MatchingLevelButtonType.ROW)
   const [useHint, setUseHint] = useState(false)
   const [retry, setRetry] = useState(false)
+  const [clickCount, setClickCount] = useState(0)
   const [isOnBoarding, setIsOnBoarding] = useState(false)
   const { click } = useClickCounterStore()
 
@@ -57,6 +58,10 @@ const MatchingMatchingGame = () => {
             onClick={() => {
               click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 힌트보기' })
               if (useHint) return
+              else if (clickCount !== 0) {
+                alert('카드를 확인 중인 상태에서는 힌트보기를 할 수 없어요!')
+                return
+              }
               setUseHint(true)
               setTimeout(() => { setUseHint(false) }, 3000)
             }}
@@ -64,6 +69,10 @@ const MatchingMatchingGame = () => {
           <MatchingGameButton
             title={'다시하기'}
             onClick={() => {
+              if (useHint) {
+                alert('힌트보기 상태에서는 다시하기를 할 수 없어요!')
+                return
+              }
               click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기' })
               setUseHint(false)
               setRetry(!retry)
@@ -79,6 +88,8 @@ const MatchingMatchingGame = () => {
       retry={retry}
       setUseHint={setUseHint}
       setRetry={setRetry}
+      clickCount={clickCount}
+      setClickCount={setClickCount}
     />
   </div>
 }
