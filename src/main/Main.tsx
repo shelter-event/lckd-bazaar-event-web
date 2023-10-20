@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { usePageCounterStore } from "../zustand/state/PageCounterState";
 import Banner from "./Banner";
 import LCKD from "./LCKD";
-import { useMediaQuery } from "react-responsive";
-import MatchingMatchingGame from "./matchingGame/PuppiesMatchingGame";
+import PuppiesMatchingGame from "./matchingGame/PuppiesMatchingGame";
 import Puppies from "./puppies/Puppies";
-import { usePageCounterStore } from "../zustand/state/PageCounterState";
-import { useEffect, useState } from "react";
 
 const Main = () => {
   const isPc = useMediaQuery({
@@ -12,6 +12,7 @@ const Main = () => {
   });
   const style = isPc ? mainPCStyle : mainMobileStyle
   const [init, setInit] = useState(false)
+
   const { getVisitPageCounter, visitPage } = usePageCounterStore()
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Main = () => {
     {isPc ? <></> : <div style={{ height: '2px', background: '#f5f5f5' }}>&nbsp;</div>}
     <Puppies />
     <div style={{ height: '2px', background: '#f5f5f5' }}>&nbsp;</div>
-    <MatchingMatchingGame />
+    <PuppiesMatchingGame />
   </div>
 }
 

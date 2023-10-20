@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useSearchParams } from 'react-router-dom';
+import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
 import { PuppyParameter, puppyParameters } from './PuppiesParameters';
 import PuppyCard, { GoInstagramCard } from './PuppyCard';
 import styles from './puppies.module.scss';
-import { Link } from 'react-router-dom';
-import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
 
 const Puppies = () => {
   const [puppies, setPuppies] = useState([] as PuppyParameter[])
@@ -14,6 +14,13 @@ const Puppies = () => {
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
   });
+  const scroll = useSearchParams()[0].get('scroll')
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (scroll !== 'puppies') return
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [scroll])
 
   useEffect(() => {
     var count = 0
@@ -44,7 +51,7 @@ const Puppies = () => {
     setPuppies(puppyParameters)
   }
 
-  return <div>
+  return <div ref={ref}>
     <div className={styles.puppiesWrapper}>
       <h2 className={styles.title}>쉼터 아이들 소개</h2>
       <span className={styles.introduction}>{isPc ? '쉼터에 있는 아이들을 소개합니다.' : ''}</span>
@@ -73,7 +80,7 @@ const Puppies = () => {
       {
         isMore ? '' :
           <div className={styles.more} onClick={(e: any) => {
-            click({clickId: 'Main - 쉼터 아이들 소개 - 더보기'})
+            click({ clickId: 'Main - 쉼터 아이들 소개 - 더보기' })
             showAllPuppies()
           }}>
             <span>더보기</span>

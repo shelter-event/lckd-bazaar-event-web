@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
+import { useSearchParams } from 'react-router-dom'
 import { useClickCounterStore } from '../../zustand/state/ClickCounterState'
 import { useMatchingGameStore } from '../../zustand/state/MatchingGameState'
 import MatchingGame from './MatchingGame'
 import { MatchingGameButton, MatchingLevelButton, MatchingLevelButtonType } from './MatchingGameButton'
 import styles from './puppiesMatchingGame.module.scss'
 
-const MatchingMatchingGame = () => {
+const PuppiesMatchingGame = () => {
   const [level, setLevel] = useState(MatchingLevelButtonType.ROW)
   const [useHint, setUseHint] = useState(false)
   const [retry, setRetry] = useState(false)
@@ -20,13 +21,21 @@ const MatchingMatchingGame = () => {
     query: "(min-width:1024px)"
   });
 
+  const scroll = useSearchParams()[0].get('scroll')
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (scroll !== 'matchingGame') return
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [scroll])
+
   useEffect(() => {
     getMatchingGameCounter()
     getMatchingGameLotteryIndex()
   }, [])
 
   return <div className={styles.puppiesMatchingGameBox}>
-    <h2 className={styles.title}>
+    <h2 ref={ref} className={styles.title}>
       쉼터 아이들 맞추기 게임
     </h2>
     <span className={styles.introduction}>
@@ -94,4 +103,4 @@ const MatchingMatchingGame = () => {
   </div>
 }
 
-export default MatchingMatchingGame
+export default PuppiesMatchingGame

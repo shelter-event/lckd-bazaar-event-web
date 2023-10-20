@@ -1,4 +1,6 @@
+import { useEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useSearchParams } from "react-router-dom";
 import { ReactComponent as Adopt } from '../assets/icons/adopt.svg';
 import { ReactComponent as Business } from '../assets/icons/business.svg';
 import { ReactComponent as Event } from '../assets/icons/event.svg';
@@ -10,7 +12,15 @@ const LCKD = () => {
     query: "(min-width:1024px)"
   });
 
-  return <div className={styles.lckdWrapper}>
+  const scroll = useSearchParams()[0].get('scroll')
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (scroll !== 'lckd') return
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [scroll])
+
+  return <div className={styles.lckdWrapper} ref={ref}>
     <div className={styles.lckd}>
       <h2 className={styles.title}>LCKD (비영리민간단체 유기동물 보호소)</h2>
       {isPc ? <hr /> : <></>}
