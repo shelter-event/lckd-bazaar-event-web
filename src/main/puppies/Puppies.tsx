@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { useSearchParams } from 'react-router-dom';
 import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
 import { PuppyParameter, puppyParameters } from './PuppiesParameters';
 import PuppyCard, { GoInstagramCard } from './PuppyCard';
@@ -14,13 +13,6 @@ const Puppies = () => {
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
   });
-  const scroll = useSearchParams()[0].get('scroll')
-  const ref = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    if (scroll !== 'puppies') return
-    ref.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [scroll])
 
   useEffect(() => {
     var count = 0
@@ -51,7 +43,7 @@ const Puppies = () => {
     setPuppies(puppyParameters)
   }
 
-  return <div ref={ref}>
+  return <div id='puppies'>
     <div className={styles.puppiesWrapper}>
       <h2 className={styles.title}>쉼터 아이들 소개</h2>
       <span className={styles.introduction}>{isPc ? '쉼터에 있는 아이들을 소개합니다.' : ''}</span>

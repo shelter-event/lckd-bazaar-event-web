@@ -20,6 +20,13 @@ const Main = () => {
     setInit(true)
     visitPage({ page: 'Main' })
     getVisitPageCounter({ page: 'Main' })
+
+    if (window.location.hash) {
+      const element = document.querySelector(window.location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   }, [])
 
   return <div style={style}>
