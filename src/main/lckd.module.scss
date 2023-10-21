@@ -28,7 +28,9 @@
       min-width: 1024px;
 
       padding-top: 82px;
-      padding-bottom: 60px
+      padding-bottom: 60px;
+      padding-left: 48px;
+      padding-right: 48px;
     }
 
     @include mobile {
