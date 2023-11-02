@@ -108,6 +108,21 @@
             }
           }
 
+          .album {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            height: 100%;
+            
+            .image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              overflow: hidden;
+            }
+
+          }
+
           .qna {
             padding: 30px;
             background-color: #FFC772;
@@ -137,6 +152,7 @@
               .question {
                 color: #43240A;
               }
+
               .answer {
                 color: #CD0F00;
               }

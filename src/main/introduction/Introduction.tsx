@@ -1,9 +1,10 @@
-import styles from './introduction.module.scss';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import IntroductionImage from '../../assets/main/introduction/introduction.webp';
 import MapImage from '../../assets/main/introduction/map.webp';
-import { useState } from 'react';
 import Dimmed from '../../common/Dimmed';
-import { Link } from 'react-router-dom';
+import ImagePlaceHolder from '../../common/ImagePlaceHolder';
+import styles from './introduction.module.scss';
 
 const tabTitle = ['오시는 길', '앨범', 'Q & A']
 const qnaList = [
@@ -21,6 +22,14 @@ const qnaList = [
   ],
 ]
 
+const imageInfos = [
+  ['훈이', require('../../assets/main/introduction/album/훈이1.jpeg')],
+  ['LCKD 강아지들', require('../../assets/main/introduction/album/all.jpeg')],
+  ['깜순이', require('../../assets/main/introduction/album/깜순.jpeg')],
+  ['돌체', require('../../assets/main/introduction/album/돌체.jpeg')],
+  ['벤', require('../../assets/main/introduction/album/벤1.jpeg')],
+  ['훈이', require('../../assets/main/introduction/album/훈이2.jpeg')],
+]
 
 const Introduction = () => {
   const [tabIndex, setTabIndex] = useState(0)
@@ -56,7 +65,7 @@ const Introduction = () => {
                 target='_blank'
               >
                 <div className={styles.map}>
-                  <img
+                  <ImagePlaceHolder
                     src={`${MapImage}`}
                     alt="오시는길 (메종브레첼) 지도 바로가기"
                   />
@@ -65,7 +74,14 @@ const Introduction = () => {
                 </div>
               </Link>
               : tabIndex === 1 ?
-                <></> :
+                <div className={styles.album}>
+                  {imageInfos.map((e) => <ImagePlaceHolder
+                    className={styles.image}
+                    src={e[1]}
+                    alt={e[0]}
+                  />)}
+                </div>
+                :
                 <div className={styles.qna}>
                   {qnaList.map((e) => <div className={styles.content}>
                     <span className={styles.question}>{e[0]}</span>
@@ -78,7 +94,7 @@ const Introduction = () => {
         </div>
       </div>
       <div className={styles.rightInfo}>
-        <img className={styles.introductionImage}
+        <ImagePlaceHolder className={styles.introductionImage}
           src={`${IntroductionImage}`}
           alt="바자회 일시: 2023년 11월 4일 (토) 11시 ~ 17시 | 장소: 경기도 성남시 수정구 탄천로 600, 메종브레첼 1층 | 주최: LCKD (비영리민간단체 유기동물 보호소) | 프로그램: 입양캠페인, 바자회, 다양한 행사"
         />
