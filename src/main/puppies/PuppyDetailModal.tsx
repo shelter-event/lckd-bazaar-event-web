@@ -15,7 +15,7 @@ const PuppyDetailModal = ({ setIsDetail, puppy }: any) => {
     <Dimmed />
     <div className={styles.puppyDetailBox} onClick={(e: any) => { e.stopPropagation() }}>
       <div className={styles.closeModal} onClick={() => { setIsDetail(false) }}><CloseModal aria-label='자세히 보기창 닫기' /></div>
-      <img className={styles.puppyImage} src={puppy.mainImageUrl} alt={puppy.name} decoding='async' loading='lazy'
+      <img className={styles.puppyImage} src={puppy.mainImageUrl} alt={puppy.name} decoding='async'
         aria-label='LCKD에서 보호중인 강이지의 사진입니다.'
       />
       <div className={styles.puppyInfoBox}>

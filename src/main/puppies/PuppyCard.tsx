@@ -118,7 +118,6 @@ const PuppyCard = (puppy: PuppyParameter) => {
       className={styles.profileImage}
       src={puppy.profileImageUrl}
       alt={puppy.name}
-      loading="lazy"
       decoding="async"
       aria-label='LCKD에서 보호중인 강아지 사진입니다.'
     />
