@@ -5,6 +5,7 @@ import Banner from "./Banner";
 import LCKD from "./LCKD";
 import PuppiesMatchingGame from "./matchingGame/PuppiesMatchingGame";
 import Puppies from "./puppies/Puppies";
+import Introduction from "./introduction/Introduction";
 
 const Main = () => {
   const isPc = useMediaQuery({
@@ -45,6 +46,7 @@ const Main = () => {
 
 
     <Banner />
+    {/* <Introduction /> */}
     <LCKD />
     {isPc ? <></> : <div style={{ height: '2px', background: '#f5f5f5' }}>&nbsp;</div>}
     <Puppies />
@@ -57,8 +59,6 @@ export default Main
 
 const mainPCStyle = {
   width: '100%',
-  maxWidth: '1980px',
-
 }
 
 const mainMobileStyle = {

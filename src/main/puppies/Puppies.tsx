@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useSearchParams } from 'react-router-dom';
 import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
 import { PuppyParameter, puppyParameters } from './PuppiesParameters';
 import PuppyCard, { GoInstagramCard } from './PuppyCard';
