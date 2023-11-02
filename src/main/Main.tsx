@@ -45,8 +45,8 @@ const Main = () => {
     </script>
 
 
-    <Banner />
-    {/* <Introduction /> */}
+    {/* <Banner /> */}
+    <Introduction />
     <LCKD />
     {isPc ? <></> : <div style={{ height: '2px', background: '#f5f5f5' }}>&nbsp;</div>}
     <Puppies />

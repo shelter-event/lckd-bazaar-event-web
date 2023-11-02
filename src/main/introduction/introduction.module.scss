@@ -1,0 +1,124 @@
+@import "../../styles/common.scss";
+
+.introductionWrapper {
+  width: 100vw;
+  background-color: #FFAF0C;
+  position: relative;
+
+  .introductionBox {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+    gap: 39px;
+    align-items: center;
+    justify-content: center;
+
+    .leftInfo {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 32px;
+
+      h2 {
+        font-size: 2.5vw;
+        font-weight: 600;
+        line-height: 150%;
+        text-align: start;
+      }
+
+      .hr {
+        width: 100px;
+        height: 8px;
+        border-radius: 20px;
+        background-color: #43240A;
+      }
+
+      .contents {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .tabBox {
+          display: flex;
+          gap: 2.031vw;
+
+          .tabButton {
+            min-width: 90px;
+            width: 6.823vw;
+            text-align: center;
+            padding: 10px;
+            border-radius: 60px;
+            font-size: 1.042vw;
+
+            box-sizing: border-box;
+            border: 2px solid #43240A;
+
+            cursor: pointer;
+
+            &.active {
+              border: 2px solid #fff;
+              background-color: #fff;
+            }
+          }
+        }
+
+        .tabContent {
+          width: 39.063vw;
+          height: 26.042vw;
+          background-color: #43240A;
+          border-radius: 8px;
+
+          .map {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            position: relative;
+
+            div {
+              display: none;
+            }
+            img {
+              width: 100%;
+              height: 100%;
+            }
+
+            .mapDetail {
+              display: none;
+            }
+
+            &:hover {
+              div {
+                display: block;
+              }
+
+              .mapDetail {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                font-size: 28px;
+                font-weight: 700;
+                line-height: 130%;
+                color: #fff;
+              }
+            }
+          }
+
+        }
+      }
+    }
+
+    .rightInfo {
+      display: inline-flex;
+
+      .introductionImage {
+        width: 47.780vw;
+        height: 41.235vw;
+      }
+    }
+  }
+
+
+}
