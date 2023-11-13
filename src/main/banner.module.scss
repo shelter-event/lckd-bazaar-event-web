@@ -7,6 +7,7 @@
 .banner {
   width: 100vw;
   position: relative;
+  background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -14,8 +15,8 @@
   overflow: auto;
 
   @include pc {
-    min-height: 100vh;
-    height: 100vh;
+    min-height: 56.25vw;
+    height: 56.25vw;
   }
 
   @include mobile {
