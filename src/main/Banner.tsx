@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import BannerImage from '../assets/banner01.webp';
-import MobileBannerImage from '../assets/banner02.webp';
+import MobileBannerImage from '../assets/mobile_banner.webp';
 import { usePageCounterStore } from '../zustand/state/PageCounterState';
 import styles from './banner.module.scss';
 
