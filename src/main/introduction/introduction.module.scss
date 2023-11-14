@@ -1,24 +1,60 @@
 @import "../../styles/common.scss";
 
 .introductionWrapper {
-  width: 100vw;
-  // background-color: #FFAF0C;
-  background-color: #EBB444;
+  background-color: #FFFDF8;
   position: relative;
 
-  .introductionBox {
-    height: 100vh;
+  @include mobile {
+    background-color: $backgroundColor;
+  }
 
+  .introductionBox {
     display: flex;
     flex-direction: row;
     gap: 39px;
     align-items: center;
     justify-content: center;
 
-    .leftInfo {
+    padding-top: 65px;
+    padding-bottom: 110px;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 28px;
+      align-items: center;
+      justify-content: center;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .bazaarInfo {
+      .introductionInfo {
+        color: $secondaryColor;
+        font-weight: $title1FontWeigth;
+        font-size: $title1FontSize;
+        line-height: $lineHieght;
+
+        @include mobile {
+          color: $brownColor;
+          font-weight: $body3FontWeigth;
+          font-size: $body3FontSize;
+        }
+      }
+    }
+
+    .bazaarQna {
       display: inline-flex;
       flex-direction: column;
+      background-color: $backgroundSubColor;
+      padding: 30px;
       gap: 32px;
+
+      @include mobile {
+        padding: 12px;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 8px;
+      }
 
       h2 {
         font-size: 2.5vw;
@@ -27,47 +63,66 @@
         text-align: start;
       }
 
-      .hr {
-        width: 100px;
-        height: 8px;
-        border-radius: 20px;
-        background-color: #43240A;
-      }
-
       .contents {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 12px;
 
         .tabBox {
           display: flex;
-          gap: 2.031vw;
+          justify-content: space-around;
 
           .tabButton {
-            min-width: 90px;
-            width: 6.823vw;
-            text-align: center;
-            padding: 10px;
             border-radius: 60px;
-            font-size: 1.042vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             box-sizing: border-box;
-            border: 2px solid #43240A;
-
+            border: 2px solid $secondaryColor;
+            color: $secondaryColor;
             cursor: pointer;
 
+            font-weight: $button1FontWeigth;
+            font-size: $button1FontSize;
+            line-height: $lineHieght;
+
+            @include pc {
+              width: 131px;
+              height: 46px;
+            }
+
+            @include mobile {
+              font-weight: $button2FontWeigth;
+              font-size: $button2FontSize;
+              border: 1px solid $brownColor;
+              color: $brownColor;
+              padding: 8px 20px;
+            }
+
             &.active {
-              border: 2px solid #fff;
-              background-color: #fff;
+              border: 0px;
+              background-color: $secondaryColor;
+              color: $whiteColor;
+
+              @include mobile {
+                background-color: $brownColor;
+              }
             }
           }
         }
 
         .tabContent {
-          width: 39.063vw;
-          height: 26.042vw;
           background-color: #43240A;
           border-radius: 8px;
+          @include pc {
+            width: 39.063vw;
+            height: 26.042vw;
+          }
+
+          @include mobile {
+            width: 100%;
+          }
 
           .map {
             width: 100%;
@@ -80,6 +135,7 @@
             }
 
             img {
+              object-fit: fill;
               width: 100%;
               height: 100%;
             }
@@ -104,6 +160,10 @@
                 font-weight: 700;
                 line-height: 130%;
                 color: #fff;
+
+                @include mobile {
+                  font-size: 22px;
+                }
               }
             }
           }
@@ -113,7 +173,11 @@
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
             height: 100%;
-            
+
+            @include mobile {
+              grid-template-columns: repeat(2, 1fr);
+            }
+
             .image {
               width: 100%;
               height: 100%;
@@ -135,6 +199,10 @@
             gap: 12px;
             overflow-y: scroll;
 
+            @include mobile {
+              padding: 12px;
+            }
+
             .content {
               flex: 1;
               display: flex;
@@ -149,6 +217,10 @@
 
               background-color: rgba(255, 255, 255, 0.20);
 
+              @include mobile {
+                font-size: 14px;
+              }
+
               .question {
                 color: #43240A;
               }
@@ -160,15 +232,6 @@
           }
 
         }
-      }
-    }
-
-    .rightInfo {
-      display: inline-flex;
-
-      .introductionImage {
-        width: 47.780vw;
-        height: 41.235vw;
       }
     }
   }

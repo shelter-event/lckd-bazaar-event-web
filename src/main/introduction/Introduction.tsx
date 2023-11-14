@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
-import IntroductionImage from '../../assets/main/introduction/introduction.webp';
 import MapImage from '../../assets/main/introduction/map.webp';
 import Dimmed from '../../common/Dimmed';
 import ImagePlaceHolder from '../../common/ImagePlaceHolder';
@@ -33,13 +33,26 @@ const imageInfos = [
 
 const Introduction = () => {
   const [tabIndex, setTabIndex] = useState(0)
+  const isPc = useMediaQuery({
+    query: "(min-width:1024px)"
+  });
 
   return <div className={styles.introductionWrapper}>
     <div className={styles.introductionBox}>
+      <div className={styles.bazaarInfo}>
+        <h2 className={styles.introductionInfo}>
+          일시 : 2023년 11월 4일 (토) 11시 ~ 17시
+          <br /><br />
+          장소 : 메종브레첼 1층
+          {isPc ? <><br />경기 성남시 수정구 탄천로 600</> : ''}
+          <br /><br />
+          주최 : LCKD (비영리민간단체 유기동물 보호소)
+          <br /><br />
+          프로그램 : 입양캠페인, 바자회, 다양한 행사
+        </h2>
+      </div>
 
-      <div className={styles.leftInfo}>
-        <h2>LCKD 유기동물 입양 캠페인 & 바자회에 <br />여러분을 초대합니다.</h2>
-        <div className={styles.hr}>&nbsp;</div>
+      <div className={styles.bazaarQna}>
         <div className={styles.contents}>
           <div className={styles.tabBox}>
             <div
@@ -68,6 +81,7 @@ const Introduction = () => {
                   <ImagePlaceHolder
                     src={`${MapImage}`}
                     alt="오시는길 (메종브레첼) 지도 바로가기"
+                    height={isPc ? '' : window.innerWidth - 54}
                   />
                   <Dimmed backgroundColor={'rgba(14, 14, 14, 0.60)'} />
                   <span className={styles.mapDetail}>지도 자세히 보기</span>
@@ -75,14 +89,17 @@ const Introduction = () => {
               </Link>
               : tabIndex === 1 ?
                 <div className={styles.album}>
-                  {imageInfos.map((e) => <ImagePlaceHolder
+                  {
+                  (isPc ? imageInfos : imageInfos.slice(0, 4)).map((e) => <ImagePlaceHolder
                     className={styles.image}
                     src={e[1]}
                     alt={e[0]}
-                  />)}
+                    height={isPc ? '' : (window.innerWidth - 54) / 2}
+                  />)
+                  }
                 </div>
                 :
-                <div className={styles.qna}>
+                <div className={styles.qna} style={isPc ? {} : {height: window.innerWidth - 54}}>
                   {qnaList.map((e) => <div className={styles.content}>
                     <span className={styles.question}>{e[0]}</span>
                     <span className={styles.answer}>{e[1].split('\n').map((str, index) => <>{str}<br /></>)}</span>
@@ -92,12 +109,6 @@ const Introduction = () => {
             }
           </div>
         </div>
-      </div>
-      <div className={styles.rightInfo}>
-        <ImagePlaceHolder className={styles.introductionImage}
-          src={`${IntroductionImage}`}
-          alt="바자회 일시: 2023년 11월 4일 (토) 11시 ~ 17시 | 장소: 경기도 성남시 수정구 탄천로 600, 메종브레첼 1층 | 주최: LCKD (비영리민간단체 유기동물 보호소) | 프로그램: 입양캠페인, 바자회, 다양한 행사"
-        />
       </div>
     </div>
   </div>
