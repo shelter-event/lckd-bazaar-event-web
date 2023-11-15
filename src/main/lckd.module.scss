@@ -19,13 +19,12 @@
     text-align: center;
     
     @include mobile {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding: 40px 28px;
     }
 
     @include pc {
-      width: 1280px;
-      max-width: 1280px;
+      width: 1440px;
+      max-width: 1440px;
       min-width: 1024px;
 
       padding-top: 82px;
@@ -34,78 +33,78 @@
       padding-right: 48px;
     }
 
-    @include mobile {
-      padding-top: 28px;
-      padding-bottom: 68px
-    }
-
     .title {
+      color: $secondaryColor;
+      line-height: $lineHieght;
+
       @include pc {
-        font-size: 40px;
-        font-weight: 700;
+        font-size: $title1FontSize;
+        font-weight: $title1FontWeigth;
+        margin-bottom: 20px;
       }
 
       @include mobile {
-        font-size: 19px;
-        font-weight: 600;
+        font-size: $body3FontSize;
+        font-weight: $body1FontWeigth;
         margin-bottom: 8px;
       }
     }
 
-    hr {
-      margin: 0 auto;
-      margin-top: 28px;
-      margin-bottom: 45px;
-
-      width: 860px;
-      border-style: dashed;
-    }
-
     .introduction {
+      color: $brownColor;
+      line-height: $lineHieght;
+
       @include pc {
-        font-size: 24px;
-        font-weight: 400;
-        color: #6F4A00;
+        font-size: $body1FontSize;
+        font-weight: $body1FontWeigth;
 
       }
 
       @include mobile {
-        font-size: 12px;
-        font-weight: 400;
-        color: #878787;
+        font-size: $body4FontSize;
+        font-weight: $body4FontWeigth;
       }
     }
   }
 }
 
 .featureWrapper {
-  display: flex;
-
   @include pc {
-    margin-top: 72px;
+    display: flex;
+    margin-top: 80px;
     gap: 24px;
   }
 
   @include mobile {
-    margin-top: 30px;
-    color: $lckdFeatureTitleColor;
-    flex-direction: column;
-    gap: 12px;
+    margin-top: 24px;
+    gap: 16px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    
+    color: $secondaryColor;
+    line-height: $lineHieght;
+    font-size: 13px;
+    font-weight: 400;
   }
 
   .featureBox {
     display: flex;
     box-sizing: border-box;
+    flex-direction: column;
+    gap: 24px;
     
     @include pc {
       width: 342px;
       min-height: 400px;
-      padding: 48px 28px;
+      padding: 48px 32px;
 
       color: $lckdFeatureTitleColor;
 
       border-radius: 20px;
-      border: 1px solid #F0F0F0;
+      border: 1px solid #fff;
       background-color: rgba(255, 255, 255, 0.80);
       box-shadow: 2px 2px 8px 0px rgba(125, 125, 125, 0.15);
       backdrop-filter: blur(10px);
@@ -114,21 +113,47 @@
 
     @include mobile {
       width: 100%;
-      padding: 16px 20px;
-      gap: 26px;
+      padding: 20px;
+      gap: 14px;
       align-items: center;
 
-      border-radius: 4px;
+      border-radius: 8px;
       border: 1px solid #F0F0F0;
-      background-color: #fffdfd;
+      background-color: #fff;
       box-shadow: 2px 2px 8px 0px rgba(125, 125, 125, 0.15);
+    }
+
+    .iconWrapper {
+      @include pc {
+        display: block;
+        text-align: start;
+        padding: 8px;
+      }
+
+      @include mobile {
+        display: inline-block;
+      }
+
+      .icon {
+        @include pc {
+          width: 48px;
+          height: 48px;
+        }
+
+        @include mobile {
+          width: 48px;
+          height: 48px;
+        }
+      }
     }
 
     .featTitle {
       @include pc {
-        font-size: 20px;
-        font-weight: 700;
-        text-align: center;
+        min-height: 62px;
+        font-size: $body1FontSize;
+        font-weight: $body1FontSize;
+        line-height: $lineHieght;
+        text-align: start;
       }
 
       @include mobile {
@@ -140,36 +165,12 @@
       }
     }
 
-    .iconWrapper {
-      @include pc {
-        display: block;
-        margin-top: 50px;
-        text-align: center;
-      }
-
-      @include mobile {
-        display: inline-block;
-      }
-
-      .icon {
-        @include pc {
-          width: 120px;
-          height: 120px;
-        }
-
-        @include mobile {
-          width: 24px;
-          height: 24px;
-        }
-      }
-    }
-
     .content {
-      font-size: 14px;
-      font-weight: 500;
+      text-align: start;
+      font-size: $body2FontSize;
+      font-weight: $body2FontSize;
+      line-height: $lineHieght;
       color: $lckdFeatureContentColor;
-
-      margin-top: 26px;
     }
 
   }
