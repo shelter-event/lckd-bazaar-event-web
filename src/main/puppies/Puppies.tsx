@@ -47,7 +47,7 @@ const Puppies = () => {
   return <div id='puppies'>
     <div className={styles.puppiesWrapper}>
       <h2 className={styles.title}>쉼터 아이들 소개</h2>
-      <span className={styles.introduction}>{isPc ? '쉼터에 있는 아이들을 소개합니다.' : ''}</span>
+      <span className={styles.introduction}>{'쉼터에 있는 아이들을 소개합니다.'}</span>
       <div className={styles.cardWrapper}>
         <GoInstagramCard />
         {
@@ -69,16 +69,16 @@ const Puppies = () => {
             />
           })
         }
+        {
+          isMore ? '' :
+            <div className={styles.more} onClick={(e: any) => {
+              click({ clickId: 'Main - 쉼터 아이들 소개 - 더보기' })
+              showAllPuppies()
+            }}>
+              <span>더보기</span>
+            </div>
+        }
       </div>
-      {
-        isMore ? '' :
-          <div className={styles.more} onClick={(e: any) => {
-            click({ clickId: 'Main - 쉼터 아이들 소개 - 더보기' })
-            showAllPuppies()
-          }}>
-            <span>더보기</span>
-          </div>
-      }
     </div>
   </div>
 }

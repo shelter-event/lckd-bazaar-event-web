@@ -4,33 +4,33 @@
   margin: 0 auto;
 
   @include pc {
+    background-color: #FFFDF8;
     max-width: 1440px;
     width: 100%;
 
-    padding-top: 120px;
-    padding-bottom: 148px;
+    padding: 120px 0;
   }
 
   @include mobile {
-    padding: 20px;
     width: 100%;
     box-sizing: border-box;
 
-    padding-top: 36px;
-    padding-bottom: 47px;
+    padding: 40px 28px;
   }
 
   .title {
     color: #000;
     text-align: center;
+    line-height: $lineHieght;
 
     @include pc {
-      font-size: 32px;
-      font-weight: 700;
+      font-size: $title1FontSize;
+      font-weight: $title1FontWeigth;
     }
 
     @include mobile {
-      font-size: 14px;
+      font-size: $body3FontSize;
+      font-weight: $body3FontWeigth;
       font-weight: 600;
       margin-bottom: 8px;
     }
@@ -40,20 +40,19 @@
   .introduction {
     text-align: center;
     display: block;
-    font-weight: 400;
+    line-height: $lineHieght;
+    color: $brownColor;
 
     @include pc {
-      margin-top: 21px;
-      margin-bottom: 90px;
-      font-size: 24px;
-      color: #6F4A00;
+      margin-top: 20px;
+      font-size: $body1FontSize;
+      font-weight: $body1FontWeigth;
     }
 
     @include mobile {
-      margin-top: 12px;
-      margin-bottom: 24px;
-      font-size: 12px;
-      color: #878787;
+      margin-top: 8px;
+      font-size: $body4FontSize;
+      font-weight: $body4FontWeigth;
     }
   }
 
@@ -63,12 +62,14 @@
     flex-wrap: wrap;
 
     @include pc {
+      margin-top: 80px;
       gap: 1.597%;
       padding-left: 48px;
       padding-right: 48px;
     }
 
     @include mobile {
+      margin-top: 24px;
       gap: 4.762%;
 
       .productMore {
@@ -101,7 +102,7 @@
           gap: 1.389vw;
 
           .moveInstagramSubText {
-            color: #6E4A00;
+            color: $brownColor;
             font-size: 28px;
             font-weight: 700;
             line-height: 150%;
@@ -351,27 +352,27 @@
   }
 
   .more {
-    width: 50%;
-    max-width: 464px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    width: 100%;
+    padding-top: 23px;
+    padding-bottom: 23px;
     margin: 0 auto;
-    margin-top: 24px;
+    margin-top: 14px;
 
     border-radius: 20px;
     cursor: pointer;
     display: block;
 
-    color: #fff;
-    background-color: #FFAF0C;
+    color: $secondaryColor;
+    background-color: $backgroundSubColor;
     text-align: center;
 
-    font-size: 32px;
-    font-weight: 600;
+    line-height: $lineHieght;
+    font-size: $button1FontSize;
+    font-weight: $button1FontWeigth;
 
     @include mobile {
-      font-size: 22px;
-      padding: 12px;
+      font-size: $button2FontSize;
+      font-weight: $button2FontWeigth;
     }
   }
 }
