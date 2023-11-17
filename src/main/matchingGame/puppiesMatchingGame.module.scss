@@ -2,6 +2,7 @@
 
 .puppiesMatchingGameBox {
   margin: 0 auto;
+  background-color: $backgroundColor;
 
   @include pc {
     max-width: 1440px;
@@ -22,35 +23,38 @@
 
   .title {
     text-align: center;
-    color: #000;
-    font-size: 32px;
-    font-weight: 700;
+    color: $secondaryColor;
+    line-height: $lineHieght;
+    font-size: $title1FontSize;
+    font-weight: $title1FontWeigth;
 
     @include mobile {
-      font-size: 14px;
+      font-size: $body3FontSize;
+      font-weight: 600;
     }
   }
 
   .introduction {
     text-align: center;
     display: block;
-    color: #000;
-    font-size: 24px;
-    font-weight: 400;
+
+    color: $brownColor;
+    line-height: $lineHieght;
 
     @include pc {
-      margin-top: 21px;
-      margin-bottom: 90px;
-      color: #6F4A00;
+      margin-top: 20px;
+      margin-bottom: 40px;
+
+      font-size: $body1FontSize;
+      font-weight: $body1FontWeigth;
     }
 
     @include mobile {
-      margin-top: 12px;
+      margin-top: 8px;
       margin-bottom: 24px;
 
-      font-size: 11px;
-      font-weight: 400;
-      color: #878787;
+      font-size: $body4FontSize;
+      font-weight: $body4FontWeigth;
     }
   }
 }
