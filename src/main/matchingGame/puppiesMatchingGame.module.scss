@@ -3,20 +3,16 @@
 .puppiesMatchingGameBox {
   margin: 0 auto;
   background-color: $backgroundColor;
+  width: 100vw;
 
   @include pc {
-    max-width: 1440px;
-    width: 100%;
-
     padding-top: 120px;
     padding-bottom: 160px;
   }
 
   @include mobile {
     padding: 20px;
-    width: 100%;
     box-sizing: border-box;
-
     padding-top: 36px;
     padding-bottom: 60px;
   }
@@ -75,97 +71,157 @@
   }
 }
 
-
-.matchingLevelButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 12px;
-  background-color: #e4e4e4;
-  box-sizing: border-box;
-
-  cursor: pointer;
-
-  @include pc {
-    padding: 20px 30px;
-  }
-
-  @include mobile {
-    width: 48px;
-    height: 48px;
-  }
-
-  &.high {
-    background-color: #FF6726;
-  }
-
-  &.row {
-    background-color: #26A4FF;
-  }
-
-  .level {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 700;
-
-    @include mobile {
-      font-size: 14px;
-    }
-  }
-}
-
-.matchingGameButton {
-  cursor: pointer;
-  display: inline-block;
-  border: 1px solid $mainColor;
-  border-radius: 12px;
-
-  padding: 20px 50px;
-
-  color: $mainColor;
-  font-size: 32px;
-  font-weight: 500;
-
-  @include mobile {
-    padding: 16px 20px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-}
-
 .matchingGameWrapper {
   position: relative;
   margin: 0 auto;
+  background-color: $backgroundSubColor;
 
   @include pc {
     width: 75vw;
     max-width: 1440px;
     border-radius: 20px;
     box-sizing: border-box;
+    padding: 32px;
     padding-left: 5%;
     padding-right: 5%;
-    background-color: #F7F3C2;
   }
 
   @include mobile {
-    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 8px;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
   .matchingGameButtonWrapper {
-    position: absolute;
-    top: 20px;
-    right: 1%;
-    width: 16%;
+    padding-left: 15%;
+    padding-right: 15%;
+
+    @include pc {
+      margin-bottom: 23px;
+    }
+
+    @include mobile {
+      margin-bottom: 4px;
+    }
 
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     gap: 10px;
 
-    .matchingGameButton {
-      text-align: center;
-      padding: 20px 0;
+    .matchingGameLeftButtonWrapper {
+      display: flex;
+      gap: 26px;
 
+      @include mobile {
+        gap: 2px;
+      }
+
+      .matchingGameButton {
+        cursor: pointer;
+        background-color: $whiteColor;
+        border: 0;
+        box-sizing: border-box;
+        border-radius: 12px;
+        color: $mainColor;
+
+        @include pc {
+          padding: 7px 31px;
+        }
+
+        @include mobile {
+          border-radius: 2px;
+          padding: 4px;
+        }
+
+
+        div {
+          @include pc {
+            width: 36px;
+            height: 36px;
+          }
+
+          @include mobile {
+            box-sizing: border-box;
+            width: 22px;
+            height: 22px;
+            svg {
+              width: 8px;
+              height: 8px;
+            }
+          }
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+
+      }
+    }
+
+    .matchingGameWrapperCenter {
+      color: $brownColor;
+      line-height: $lineHieght;
+      font-size: $title1FontSize;
+      font-weight: $title1FontWeigth;
+
+      @include mobile {
+        font-size: $body4FontSize;
+        font-weight: $body4FontWeigth;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .matchingGameRightButtonWrapper {
+      display: flex;
+      gap: 8px;
+
+      @include mobile {
+        gap: 2px;
+      }
+
+      .matchingLevelButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 12px;
+        background-color: #e4e4e4;
+        box-sizing: border-box;
+
+        cursor: pointer;
+
+        @include pc {
+          padding: 12px 40px;
+        }
+
+        @include mobile {
+          border-radius: 2px;
+          padding: 15px;
+          width: 16px;
+          height: 16px;
+        }
+
+        &.high {
+          background-color: #FF6726;
+        }
+
+        &.row {
+          background-color: #26A4FF;
+        }
+
+        .level {
+          color: #fff;
+          font-size: 24px;
+          font-weight: 700;
+
+          @include mobile {
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 
@@ -173,7 +229,6 @@
 
 .matchingGameBox {
   position: relative;
-  background-color: #E4E4E4;
   margin: 0 auto;
 
   @include pc {
@@ -241,12 +296,6 @@
     margin: 0 auto;
     justify-content: center;
 
-    @include mobile {
-      column-gap: 4vw;
-      row-gap: 4vw;
-      padding: 4vw;
-    }
-
     &.row {
       grid-template-columns: 1fr 1fr;
     }
@@ -271,11 +320,12 @@
   }
 
   &.active {
-  transform: rotateY(0deg);
+    transform: rotateY(0deg);
+
     .matchingCard.back {
       display: none;
     }
-    
+
     .matchingCard.name,
     .matchingCard.image {
       display: inline-flex;
@@ -412,8 +462,8 @@
 
     @include mobile {
       &.row {
-        width: 33.333vw;
-        height: 33.333vw;
+        width: 40vw;
+        height: 40vw;
 
         &.name {
           gap: 2.083vw;
@@ -445,8 +495,9 @@
       }
 
       &.high {
-        width: 15.6665vw;
-        height: 15.6665vw;
+        width: 19vw;
+        height: 19vw;
+        border-radius: 12px;
 
         &.name {
           gap: 1.0415vw;

@@ -6,18 +6,18 @@ import { useClickCounterStore } from '../../zustand/state/ClickCounterState';
 import { useMatchingGameStore } from '../../zustand/state/MatchingGameState';
 import { CardParameter, cardParameters, copyWithCard } from './CardParameters';
 import MatchingCard from './MatchingCard';
-import { MatchingGameButton, MatchingLevelButtonType } from './MatchingGameButton';
+import { MatchingGameButton, MatchingLevelButton, MatchingLevelButtonType } from './MatchingGameButton';
 import MatchingOnBoard from './MatchingOnBoard';
 import styles from './puppiesMatchingGame.module.scss';
 
 const MatchingGame = ({
-  level = MatchingLevelButtonType.ROW,
   isOnBoarding,
   useHint = false,
   retry = false,
-  clickCount = 0, 
+  clickCount = 0,
   setUseHint, setRetry, setClickCount,
 }: any) => {
+  const [level, setLevel] = useState(MatchingLevelButtonType.ROW)
   const isPc = useMediaQuery({
     query: "(min-width:1024px)"
   })
@@ -171,8 +171,9 @@ const MatchingGame = ({
         setModalActiveStates([modalActiveStates[0], false])
       }}
     />
-    {
-      isPc ? <div className={styles.matchingGameButtonWrapper}>
+
+    <div className={styles.matchingGameButtonWrapper}>
+      <div className={styles.matchingGameLeftButtonWrapper}>
         <MatchingGameButton
           title={'힌트보기'}
           onClick={() => {
@@ -198,8 +199,30 @@ const MatchingGame = ({
             click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 다시하기' })
           }}
         />
-      </div> : <></>
-    }
+      </div>
+      <div className={styles.matchingGameWrapperCenter}>
+        {successCardIds.length / 2} / {level == MatchingLevelButtonType.HIGH ? '6' : '2'}
+      </div>
+      <div className={styles.matchingGameRightButtonWrapper}>
+        <MatchingLevelButton
+          onClick={() => {
+            setUseHint(false)
+            setLevel(MatchingLevelButtonType.HIGH)
+            click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 상' })
+          }}
+          type={MatchingLevelButtonType.HIGH}
+        />
+        <MatchingLevelButton
+          onClick={() => {
+            setUseHint(false)
+            setLevel(MatchingLevelButtonType.ROW)
+            click({ clickId: 'Main - 쉼터 아이들 맞추기 게임 - 하' })
+          }}
+          type={MatchingLevelButtonType.ROW}
+        />
+      </div>
+    </div>
+
     <div className={styles.matchingGameBox}>
       <div className={`${styles.gameOnBoard} ${isOnBoarding ? styles.active : styles.inactive}`}>
         <h3 className={styles.onBoardTitle}>쉼터 아이들 특징 맞추기 게임</h3>
