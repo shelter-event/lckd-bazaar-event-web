@@ -90,7 +90,35 @@
           text-decoration: none;
         }
 
+        svg {
+          position: absolute;
+          display: block;
+          width: 2.5vw;
+          height: 2.5vw;
+          max-width: 32px;
+          max-height: 32px;
+          top: 2.222vw;
+          right: 1.389vw;
+
+          @include mobile {
+            width: 4vw;
+            height: 4vw;
+            top: 4vw;
+            right: 3vw;
+
+          }
+        }
+
+        @include mobile {
+          background-color: $backgroundSubColor;
+          font-size: $button2FontSize;
+          font-weight: $button2FontWeigth;
+          line-height: $lineHieght;
+          text-align: center;
+        }
+
         &.moveInstagramType0 {
+
           background-size: 120%;
           background-position: -10px -10px;
 
@@ -135,30 +163,11 @@
           justify-content: center;
           align-items: center;
           text-align: center;
-          background-color: #F7F3C2;
+          background-color: $backgroundSubColor;
           gap: 42px;
 
           &.moveInstagramType2 {
             gap: 1.111vw;
-          }
-
-          svg {
-            position: absolute;
-            display: block;
-            width: 2.5vw;
-            height: 2.5vw;
-            max-width: 32px;
-            max-height: 32px;
-            top: 2.222vw;
-            right: 1.389vw;
-
-            @include mobile {
-              width: 4vw;
-              height: 4vw;
-              top: 4vw;
-              right: 3vw;
-
-            }
           }
 
           .moveInstagramImage1 {
@@ -287,7 +296,7 @@
       .profileImage {
         width: 100%;
         vertical-align: bottom;
-        background-color: #F7F3C2;
+        background-color: $backgroundSubColor;
         // background-color: rgb(255, 204, 204);
       }
 
@@ -407,7 +416,7 @@
       cursor: pointer;
       top: 40px;
       right: 40px;
-      
+
       width: 44px;
       height: 44px;
 
